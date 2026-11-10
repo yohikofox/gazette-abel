@@ -23,9 +23,9 @@ html:has(body[data-menu-open="true"]) { overflow:hidden; }
 .menu-close { border:2px solid var(--ink); background:transparent; color:var(--ink); width:38px; height:38px; font:30px/1 Georgia,serif; cursor:pointer; }
 .menu-drawer h2 { font:normal 23px/1 'Fell SC',Georgia,serif; text-transform:uppercase; margin:19px 0 9px; border-bottom:1px solid var(--rule); padding-bottom:5px; }
 .controls { display:grid; grid-template-columns:1fr 1fr; gap:7px; }
-.controls a,.header-language button,.photo-modes button,.menu-actions button { display:block; min-height:38px; padding:8px 10px; border:1px solid #705734; border-radius:2px; background:#ead9b5bb; color:var(--ink); text-decoration:none; text-align:left; cursor:pointer; font:700 15px 'Fell SC',Georgia,serif; }
-.controls a:hover,.header-language button:hover,.photo-modes button:hover,.menu-actions button:hover { background:#d5b783; }
-.controls a:focus-visible,.header-language button:focus-visible,.photo-modes button:focus-visible,.menu-actions button:focus-visible,.menu-close:focus-visible { outline:3px solid #5b421d; outline-offset:2px; }
+.controls a,.header-language button,.photo-modes button,.menu-actions button,.menu-actions a { display:block; min-height:38px; padding:8px 10px; border:1px solid #705734; border-radius:2px; background:#ead9b5bb; color:var(--ink); text-decoration:none; text-align:left; cursor:pointer; font:700 15px 'Fell SC',Georgia,serif; }
+.controls a:hover,.header-language button:hover,.photo-modes button:hover,.menu-actions button:hover,.menu-actions a:hover { background:#d5b783; }
+.controls a:focus-visible,.header-language button:focus-visible,.photo-modes button:focus-visible,.menu-actions button:focus-visible,.menu-actions a:focus-visible,.menu-close:focus-visible { outline:3px solid #5b421d; outline-offset:2px; }
 .controls a[aria-current="page"],.header-language button[aria-pressed="true"],.photo-modes button[aria-pressed="true"] { background:#2c2118; color:#f0dfbf; border-color:#2c2118; }
 .header-language,.photo-modes { display:flex; gap:8px; }
 .header-language button { flex:1; text-align:center; }
@@ -47,12 +47,13 @@ body[data-layout-grid="on"] .layout-grid { display:grid; }
 .paper { width:1122px; height:1587px; margin:22px auto 36px; padding:33px 46px 42px; overflow:hidden; position:relative; scroll-margin-top:98px; border-radius:22px; background-color:#e5d2aa; background-image:url('assets/dd1a6df6297c259f.png'); background-size:100% 100%; box-shadow:0 12px 40px #0009; }
 .mobile-reader { display:none; }
 @media(max-width:900px) {
- body { padding-bottom:calc(68px + env(safe-area-inset-bottom)); overflow-x:hidden; }
+ body { overflow:hidden; }
  .menu-toggle { width:48px; height:57px; top:8px; left:8px; }
- .paper-viewport { width:100%; margin:10px auto 0; overflow-x:auto; overflow-y:hidden; overscroll-behavior-x:contain; -webkit-overflow-scrolling:touch; }
- .paper-stage { position:relative; margin:0 auto; }
+ .paper-viewport { position:fixed; inset:0 0 var(--reader-toolbar-height,68px) 0; z-index:1; display:flex; width:100%; height:auto; margin:0; overflow:auto; overscroll-behavior:contain; -webkit-overflow-scrolling:touch; }
+ .paper-stage { position:relative; flex:none; margin:auto; }
  .paper-stage > .paper { position:absolute; left:0; top:0; margin:0 !important; transform-origin:top left !important; }
  body[data-mobile-reader="true"] .paper-viewport:not(.is-current) { display:none; }
+ .site-footer { display:none; }
  .mobile-reader { position:fixed; left:0; right:0; bottom:0; z-index:180; display:flex; align-items:center; justify-content:space-evenly; gap:4px; min-height:58px; padding:7px 8px calc(7px + env(safe-area-inset-bottom)); background:#241c14; border-top:2px solid #c6a36e; color:#f1dfb9; box-shadow:0 -5px 18px #0008; font:700 14px 'Fell SC',Georgia,serif; }
  .mobile-reader button { min-width:39px; min-height:39px; padding:3px 7px; border:1px solid #c6a36e; border-radius:3px; background:#3b2b1d; color:inherit; font:700 19px 'Fell SC',Georgia,serif; touch-action:manipulation; }
  .mobile-reader button:disabled { opacity:.36; }
@@ -107,8 +108,8 @@ figure { margin:0; }
 .owl-motion { position:relative; }
 .owl-motion img,.owl-motion video { position:absolute; inset:0; width:100%; height:100%; object-fit:contain; }
 .owl-motion video { display:none; }
-body:not([data-motion-paused="true"]) .owl-motion video { display:block; }
-body:not([data-motion-paused="true"]) .owl-motion img { visibility:hidden; }
+body[data-engraving-format="webm"]:not([data-motion-paused="true"]) .owl-motion video { display:block; }
+body[data-engraving-format="webm"]:not([data-motion-paused="true"]) .owl-motion img { visibility:hidden; }
 @media print { .owl-motion video { display:none !important; } .owl-motion img { visibility:visible !important; } }
 @media(prefers-reduced-motion:reduce) { .owl-motion video { display:none !important; } .owl-motion img { visibility:visible !important; } }
 .pull { border-top:3px solid var(--ink); border-bottom:3px solid var(--ink); font-family:Impact,'Arial Narrow',sans-serif; font-size:25px; line-height:1.01; text-transform:uppercase; text-align:center; padding:5px 0; margin:9px 0; }
@@ -160,8 +161,8 @@ html[lang="en"] .front-hero .engraving { height:50px; }
 .front-snitch { position:absolute; left:145px; top:calc(789px + var(--front-vertical-height,250px) - 60px); width:105px; height:52px; object-fit:contain; pointer-events:none; }
 .snitch-motion img,.snitch-motion video { position:absolute; inset:0; width:100%; height:100%; object-fit:contain; }
 .snitch-motion video { display:none; }
-body:not([data-motion-paused="true"]) .snitch-motion video { display:block; }
-body:not([data-motion-paused="true"]) .snitch-motion img { visibility:hidden; }
+body[data-engraving-format="webm"]:not([data-motion-paused="true"]) .snitch-motion video { display:block; }
+body[data-engraving-format="webm"]:not([data-motion-paused="true"]) .snitch-motion img { visibility:hidden; }
 @media print { .snitch-motion video { display:none !important; } .snitch-motion img { visibility:visible !important; } }
 @media(prefers-reduced-motion:reduce) { .snitch-motion video { display:none !important; } .snitch-motion img { visibility:visible !important; } }
 html[lang="en"] .front-snitch { top:calc(789px + var(--front-vertical-height,250px) - 55px); width:100px; height:50px; }
@@ -510,7 +511,7 @@ body[data-motion-paused="true"] .map-ad .map-paper,body[data-motion-paused="true
 @media print { .map-cover { display:none !important; } .map-paper { opacity:1 !important; transition:none !important; } .map-fold-toggle { display:none !important; } .map-step { animation:none !important; opacity:.8 !important; } }
 @media(prefers-reduced-motion:reduce) { .map-cover-panel,.map-cover-title,.map-cover:after,.map-paper { transition:none !important; } .map-ad.is-open .map-cover { display:none; } .map-step { animation:none; opacity:.8; } }
 
-@media print { .mobile-reader { display:none !important; } .paper-viewport { display:block !important; width:auto !important; height:auto !important; overflow:visible !important; margin:0 !important; } .paper-stage { width:auto !important; height:auto !important; } .paper-stage > .paper { position:relative !important; left:auto !important; top:auto !important; } }
+@media print { .mobile-reader { display:none !important; } .paper-viewport { position:static !important; inset:auto !important; display:block !important; width:auto !important; height:auto !important; overflow:visible !important; margin:0 !important; } .paper-stage { width:auto !important; height:auto !important; } .paper-stage > .paper { position:relative !important; left:auto !important; top:auto !important; } }
 </style><meta name="theme-color" content="#231a13">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -528,7 +529,7 @@ body[data-motion-paused="true"] .map-ad .map-paper,body[data-motion-paused="true
  <h2>Langue</h2><div class="header-language" role="group" aria-label="Langue du journal"><button type="button" data-header-language="fr" aria-pressed="false" lang="fr">FR</button><button type="button" data-header-language="en" aria-pressed="true" lang="en">EN</button></div>
  <h2>Photographies</h2><div class="photo-modes" role="group" aria-label="Rendu des photographies"><button type="button" data-mode="journal" aria-pressed="false">Filtre journal</button><button type="button" data-mode="presse" aria-pressed="true">Alternatives presse</button><button type="button" data-mode="couleur" aria-pressed="false">Couleur</button></div>
  <h2>Affichage</h2><label class="animation-option"><input id="animation-toggle" type="checkbox" checked><span>Activer les animations</span></label><div class="photo-modes"><button type="button" id="layout-grid-toggle" aria-pressed="false" aria-label="Afficher ou masquer la grille de mise en page">Grille A–L · 1–16</button></div>
- <div class="menu-actions"><button id="print-edition" type="button">Imprimer</button></div>
+ <div class="menu-actions"><button id="print-edition" type="button">Imprimer</button><a class="menu-repository" href="https://github.com/yohikofox/gazette-abel" target="_blank" rel="noopener noreferrer">Dépôt GitHub · photos et médias de la Gazette</a></div>
 <div class="menu-actions"><button id="install-gazette" type="button">Installer la Gazette</button><p id="install-gazette-help" role="status" aria-live="polite" style="margin:0;font:15px/1.25 'Fell',Georgia,serif"></p></div></aside>
 <section class="paper" id="page1">
  <div class="topline"><span>Édition anniversaire</span><span>Mercredi 11 novembre 2026</span><span>Prix : un sourire</span></div>
@@ -903,8 +904,12 @@ animatedEngravings.forEach(img=>{img.dataset.stillSrc=img.getAttribute('src')});
 const reducedMotion=window.matchMedia('(prefers-reduced-motion: reduce)');
 function updateAnimatedEngravings(forceStill=false){const animate=!forceStill&&!motionPaused&&!reducedMotion.matches;animatedEngravings.forEach(img=>{const next=animate?img.dataset.animatedSrc:img.dataset.stillSrc;if(img.getAttribute('src')!==next)img.src=next})}
 reducedMotion.addEventListener('change',()=>{updateAnimatedEngravings();updateEngravingVideos()});
+const useApngEngravings=/AppleWebKit/.test(navigator.userAgent)&&!/(Chrome|Chromium|Edg|OPR)/.test(navigator.userAgent);
+document.body.dataset.engravingFormat=useApngEngravings?'apng':'webm';
+const engravingImages=[...document.querySelectorAll('.owl-motion img,.snitch-motion img')];
+engravingImages.forEach(img=>{img.dataset.stillSrc=img.getAttribute('src');img.dataset.apngSrc=img.closest('.owl-motion')?'illustrations/chouette_vol_v2.apng':'illustrations/vif_dor_vol_v2.apng'});
 const engravingVideos=[...document.querySelectorAll('.owl-motion video,.snitch-motion video')];
-function updateEngravingVideos(forceStill=false){const play=!forceStill&&!motionPaused&&!reducedMotion.matches;engravingVideos.forEach(video=>{if(play)video.play().catch(()=>{});else video.pause()})}
+function updateEngravingVideos(forceStill=false){const play=!forceStill&&!motionPaused&&!reducedMotion.matches;engravingImages.forEach(img=>{const next=play&&useApngEngravings?img.dataset.apngSrc:img.dataset.stillSrc;if(img.getAttribute('src')!==next)img.src=next});engravingVideos.forEach(video=>{if(play&&!useApngEngravings)video.play().catch(()=>{});else video.pause()})}
 window.addEventListener('beforeprint',()=>{updateAnimatedEngravings(true);updateEngravingVideos(true)});
 window.addEventListener('afterprint',()=>{updateAnimatedEngravings();updateEngravingVideos()});
 const pressPhotos={abel_portrait:'alternatives_presse/encre/01_abel_portrait.webp',family:'alternatives_presse/encre/02_famille.webp',family_water:'alternatives_presse/encre/22_famille_eau.webp',family_trees:'alternatives_presse/encre/23_famille_arbres.webp',abel_blue_closeup:'alternatives_presse/encre/24_abel_yeux_bleus.webp',beach_a:'alternatives_presse/encre/03_marine_abel_mer_1.webp',beach_b:'alternatives_presse/encre/04_marine_abel_mer_2.webp',damien_abel:'alternatives_presse/encre/05_abel_damien.webp',tristan_elie:'alternatives_presse/encre/06_tristan_elie.webp',elies_first:'alternatives_presse/encre/07_anniversaire_elie.webp',uncles:'alternatives_presse/encre/08_les_trois_freres.webp',cousins:'alternatives_presse/encre/09_cercle_de_famille.webp',garden:'alternatives_presse/encre/10_reunion_famille.webp',tristan_portrait:'alternatives_presse/encre/11_tristan_portrait.webp',charlotte_abel:'alternatives_presse/encre/12_charlotte_abel.webp',abel_smile:'alternatives_presse/encre/13_abel_sourire.webp',abel_halloween:'alternatives_presse/encre/25_abel_halloween.webp',cousinade:'alternatives_presse/encre/14_cousinade.webp',charlotte_beauxbatons:'alternatives_presse/encre/15_charlotte_beauxbatons.webp',tristan_abel_table_a:'alternatives_presse/encre/16_tristan_abel_table_a.webp',tristan_abel_table_b:'alternatives_presse/encre/17_tristan_abel_table_b.webp',marine_damien_fontaine:'alternatives_presse/encre/18_marine_damien_fontaine.webp',elie_abel_canape:'alternatives_presse/encre/19_elie_abel_canape.webp',helene_abel:'alternatives_presse/encre/20_helene_abel.webp',cindy_poll:'alternatives_presse/encre/21_cindy_portrait.webp'};
@@ -992,10 +997,12 @@ function updateMobileReader(scrollTop=false){
  const labels=fr?['Page précédente','Page suivante','Réduire la page','Ajuster la page à l’écran','Agrandir la page','Lecture mobile']:['Previous page','Next page','Zoom out','Fit whole page','Zoom in','Mobile reader'];
  ['reader-prev','reader-next','reader-minus','reader-fit','reader-plus'].forEach((id,i)=>document.getElementById(id).setAttribute('aria-label',labels[i]));
  document.querySelector('.mobile-reader').setAttribute('aria-label',labels[5]);
- if(scrollTop&&mobile){readerViews[index].scrollLeft=0;window.scrollTo(0,0)}
+ if(scrollTop&&mobile){readerViews[index].scrollLeft=0;readerViews[index].scrollTop=0;window.scrollTo(0,0)}
 }
 function fitPages(){
  const w=window.innerWidth,mobile=w<=900,pw=1122,ph=1587,fit=Math.min(1,(w-18)/pw);
+ const toolbarHeight=document.querySelector('.mobile-reader').getBoundingClientRect().height;
+ document.documentElement.style.setProperty('--reader-toolbar-height',`${toolbarHeight}px`);
  document.body.dataset.mobileReader=String(mobile);
  readerPages.forEach((page,i)=>{
   const view=readerViews[i],stage=view.firstElementChild;
