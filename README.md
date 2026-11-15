@@ -10,6 +10,35 @@ python3 -m http.server 8000 --directory dist
 
 Puis ouvrir <http://localhost:8000/>. L’installation comme application nécessite un hébergement HTTPS.
 
-Site publié : <https://abel-gazette-anniversaire-2026.yoann-lorho.chatgpt.site/>
+Version déployée depuis GitHub : <https://yohikofox.github.io/gazette-abel/>
 
-Ce dépôt contient uniquement les fichiers diffusés par le site. Les photos sources, les restaurations de travail et les scripts de génération privés n’y figurent pas. Les portraits et autres médias de cette édition restent des contenus familiaux ; aucune licence de réutilisation n’est accordée par ce dépôt.
+Site historique : <https://abel-gazette-anniversaire-2026.yoann-lorho.chatgpt.site/>
+
+## Déploiement GitOps
+
+Le contenu de `dist/` est la version à publier. Le workflow
+`.github/workflows/deploy-pages.yml` déploie automatiquement ce dossier sur
+GitHub Pages après chaque push sur `main` qui le modifie. Il n'y a pas de build
+sur le Mac au moment du déploiement.
+
+Pour synchroniser une nouvelle version issue du projet Sites local :
+
+```sh
+./scripts/sync_from_sites.sh
+git add dist
+git commit -m "Update Gazette site"
+git push origin main
+```
+
+Le script copie les fichiers, conserve le chemin de base nécessaire à GitHub
+Pages, et adapte le lien ainsi que le QR code du menu Partager. Si la source
+est ailleurs, passer son dossier `dist/` en argument au script.
+
+Dans les paramètres du dépôt GitHub, **Settings → Pages → Build and deployment →
+Source** doit être réglé sur **GitHub Actions**. Le workflow utilise uniquement
+le `GITHUB_TOKEN` du dépôt ; aucun secret de déploiement personnel n'est requis.
+
+Ce dépôt contient les fichiers diffusés par le site et les scripts de synchronisation.
+Les photos sources, les restaurations de travail et les scripts de génération
+privés n’y figurent pas. Les portraits et autres médias de cette édition restent
+des contenus familiaux ; aucune licence de réutilisation n’est accordée par ce dépôt.
