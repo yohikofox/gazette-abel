@@ -1,0 +1,45 @@
+.share-qr {
+  box-sizing: border-box;
+  width: min(292px, 100%);
+  margin: 12px auto 6px;
+  padding: 9px;
+  background: #e7d5ae;
+  border: 2px solid #38281a;
+  box-shadow: inset 0 0 0 3px #e7d5ae, inset 0 0 0 4px #796347, 0 3px 9px #24190f35;
+  image-rendering: auto;
+  color: #21180f;
+}
+.share-qr-masthead {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 4px 5px;
+  border-bottom: 1px solid #6c5135;
+  text-align: center;
+  font: 15px/1 'Fell SC', Georgia, serif;
+  letter-spacing: .05em;
+  text-transform: uppercase;
+}
+.share-qr-masthead img {
+  display: block;
+  width: 82px;
+  height: 55px;
+  object-fit: contain;
+}
+.share-qr-code {
+  margin: 6px auto 0;
+  padding: 2px;
+  background: #e9cc98;
+  border: 1px solid #6c5135;
+}
+.share-qr-code svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  shape-rendering: geometricPrecision;
+}
+.share-qr-footer {
+  padding: 5px 2px 1px;
+  text-align: center;
+  font: italic 13px/1.1 'Fell', Georgia, serif;
+}

@@ -28,6 +28,9 @@ if count != 1 and html.count('id="share-qr"') != 1:
 
 if html.count("</body>") != 1:
     raise SystemExit("Expected exactly one closing body tag")
+stylesheet = '<link rel="stylesheet" href="./assets/embedded/share_dynamic.css">'
+if stylesheet not in html:
+    html = html.replace("</head>", f"{stylesheet}\n</head>")
 for script in ("qrcode.min.js", "share_dynamic.js"):
     tag = f'<script src="./assets/embedded/{script}" defer></script>'
     if tag not in html:
