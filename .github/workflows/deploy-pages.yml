@@ -38,6 +38,8 @@ jobs:
         uses: actions/upload-pages-artifact@v4
         with:
           path: dist
+      - name: Wait for artifact indexing
+        run: sleep 20
       - name: Deploy site
         id: deployment
         uses: actions/deploy-pages@v4
