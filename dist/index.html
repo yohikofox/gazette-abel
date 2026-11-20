@@ -711,7 +711,7 @@ body.sorting-hat-expanded {overflow:hidden}
 <link rel="preload" href="./assets/embedded/font_anton.ttf" as="font" type="font/ttf" crossorigin>
 <link rel="preload" href="./assets/embedded/font_fell.ttf" as="font" type="font/ttf" crossorigin>
 <style>@media(display-mode:standalone){.menu-toggle{top:calc(14px + env(safe-area-inset-top))}}</style>
-<link rel="stylesheet" href="./assets/embedded/share_dynamic.css">
+<link rel="stylesheet" href="assets/embedded/mobile_reading_css.css"><link rel="stylesheet" href="./assets/embedded/share_dynamic.css">
 </head><body>
 <button class="menu-toggle" id="menu-toggle" type="button" aria-label="Ouvrir le menu" aria-controls="menu-drawer" aria-expanded="false"><svg viewBox="0 0 64 76" role="img" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><path d="M32 3 59 11v28c0 17-10 27-27 34C15 66 5 56 5 39V11Z" fill="#c8a46c" stroke="#f7dfac" stroke-width="2"/><path d="M32 8 54 15v23c0 13-7 21-22 29C17 59 10 51 10 38V15Z" fill="#2b2118" stroke="#2b2118" stroke-width="2"/><path d="M11 16h21v22H11Z" fill="#8a3029"/><path d="M32 16h21v22H32Z" fill="#286549"/><path d="M11 38h21v24c-12-7-21-14-21-24Z" fill="#b18a36"/><path d="M32 38h21c0 10-8 18-21 24Z" fill="#315077"/><path d="M32 10v55M11 38h42" stroke="#e9cb91" stroke-width="1.5"/><text x="21" y="31" text-anchor="middle" font-family="Georgia" font-size="16" font-weight="bold" fill="#f5e2b9">G</text><text x="43" y="31" text-anchor="middle" font-family="Georgia" font-size="16" font-weight="bold" fill="#f5e2b9">S</text><text x="21" y="53" text-anchor="middle" font-family="Georgia" font-size="16" font-weight="bold" fill="#f5e2b9">H</text><text x="43" y="53" text-anchor="middle" font-family="Georgia" font-size="16" font-weight="bold" fill="#f5e2b9">R</text><circle cx="32" cy="38" r="9" fill="#dbc18b" stroke="#21180f" stroke-width="1.5"/><text x="32" y="44" text-anchor="middle" font-family="Georgia" font-size="17" font-weight="bold" fill="#21180f">A</text></svg></button>
 <div class="menu-backdrop" id="menu-backdrop" aria-hidden="true"></div>
@@ -720,7 +720,7 @@ body.sorting-hat-expanded {overflow:hidden}
  <h2>Pages</h2><nav class="controls" aria-label="Pages du journal"><a href="#page1">Une</a><a href="#page2">Famille</a><a href="#page3">Tristan</a><a href="#page4">Enquête</a><a href="#page5">Généalogie</a><a href="#page6">Chroniques</a><a href="#page7">La bande</a><a href="#page8">Charlotte</a><a href="#page9">Tristan & Abel</a><a href="#page10">Choixpeau</a><a href="#page11">Les quatre</a><a href="#page12">La Carte du Maraudeur</a><a href="#page13">Crédits</a></nav><div class="menu-actions"><a href="articles_temporaires.html">Articles en réserve</a></div>
  <h2>Langue</h2><div class="header-language" role="group" aria-label="Langue du journal"><button type="button" data-header-language="fr" aria-pressed="false" lang="fr">FR</button><button type="button" data-header-language="en" aria-pressed="true" lang="en">EN</button></div>
  <h2>Photographies</h2><div class="photo-modes" role="group" aria-label="Rendu des photographies"><button type="button" data-mode="journal" aria-pressed="false">Filtre journal</button><button type="button" data-mode="presse" aria-pressed="true">Alternatives presse</button><button type="button" data-mode="couleur" aria-pressed="false">Couleur</button></div>
- <h2>Affichage</h2><label class="animation-option"><input id="animation-toggle" type="checkbox" checked><span>Activer les animations</span></label><div class="photo-modes"><button type="button" id="layout-grid-toggle" aria-pressed="false" aria-label="Afficher ou masquer la grille de mise en page">Grille A–L · 1–16</button></div>
+ <h2>Affichage</h2><div class="reader-layout-choice" role="group" aria-label="Mode de lecture" data-reader-layout-choice><button type="button" data-reader-choice="auto" aria-pressed="true">Automatique</button><button type="button" data-reader-choice="mobile" aria-pressed="false">Lecture mobile</button><button type="button" data-reader-choice="journal" aria-pressed="false">Page de journal</button></div><label class="animation-option"><input id="animation-toggle" type="checkbox" checked><span>Activer les animations</span></label><div class="photo-modes"><button type="button" id="layout-grid-toggle" aria-pressed="false" aria-label="Afficher ou masquer la grille de mise en page">Grille A–L · 1–16</button></div>
  <div class="menu-actions"><button id="share-edition" type="button">Partager</button><button id="print-edition" type="button">Imprimer</button><a class="menu-repository" href="https://github.com/yohikofox/gazette-abel" target="_blank" rel="noopener noreferrer">Dépôt GitHub · photos et médias de la Gazette</a></div>
 <div class="menu-actions"><button id="install-gazette" type="button">Installer la Gazette</button><p id="install-gazette-help" role="status" aria-live="polite" style="margin:0;font:15px/1.25 'Fell',Georgia,serif"></p></div></aside>
 <div class="share-overlay" id="share-overlay" hidden><section class="share-dialog" role="dialog" aria-modal="true" aria-labelledby="share-title"><button class="share-close" id="share-close" type="button" aria-label="Fermer le partage">×</button><h2 id="share-title">Partager la Gazette</h2><p>Envoyez le lien ou faites scanner le code.</p><input class="share-url" id="share-url" type="url" readonly aria-label="Lien public de la Gazette"><button class="share-copy" id="share-copy" type="button">Copier le lien</button><div class="share-status" id="share-status" role="status" aria-live="polite"></div><div class="share-qr" id="share-qr" role="img" aria-label="QR code vers la Gazette d’Abel"></div></section></div>
@@ -1870,8 +1870,8 @@ readerViews.forEach(view=>{
  let swipeStart=null;
  view.addEventListener('touchstart',event=>{
   swipeStart=null;
-  if(window.innerWidth>900||readerZoom!==null||document.fullscreenElement||document.body.dataset.menuOpen==='true'||!view.classList.contains('is-current')||event.touches.length!==1)return;
-  if(event.target instanceof Element&&event.target.closest('button,a,input,select,textarea,[role="button"],[contenteditable="true"]'))return;
+  if(document.body.dataset.mobileReader!=='true'||readerZoom!==null||document.fullscreenElement||document.body.dataset.menuOpen==='true'||!view.classList.contains('is-current')||event.touches.length!==1)return;
+  if(event.target instanceof Element&&event.target.closest('button,a,input,select,textarea,[role="button"],[contenteditable="true"],.sorting-layout,.map-ad-mapframe,.genealogy-fullscreen-tapestry'))return;
   swipeStart={x:event.touches[0].clientX,y:event.touches[0].clientY};
  },{passive:true});
  view.addEventListener('touchmove',event=>{if(event.touches.length!==1)swipeStart=null},{passive:true});
@@ -1912,6 +1912,6 @@ window.addEventListener('resize',fitPages);fitPages();
   navigator.serviceWorker.register('./sw.js').catch(()=>{});
  });}
 })();
-</script><script src="./assets/embedded/qrcode.min.js" defer></script>
+</script><script src="assets/embedded/mobile_reading_js.js" defer></script><script src="./assets/embedded/qrcode.min.js" defer></script>
 <script src="./assets/embedded/share_dynamic.js" defer></script>
 </body></html>
