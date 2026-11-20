@@ -5,7 +5,7 @@
   let preference = 'auto';
   try { preference = localStorage.getItem(key) || 'auto'; } catch (_) {}
   if (!values.has(preference)) preference = 'auto';
-  const phone = () => navigator.userAgentData?.mobile ?? /iPhone|iPod|Android.*Mobile|Windows Phone|BlackBerry/i.test(navigator.userAgent);
+  const phone = () => navigator.userAgentData?.mobile === true || /iPhone|iPod|Android.*Mobile|Windows Phone|BlackBerry/i.test(navigator.userAgent);
   const buttons = [...document.querySelectorAll('[data-reader-choice]')];
   const text = {
     fr: { auto: 'Automatique', mobile: 'Lecture mobile', journal: 'Page de journal', group: 'Mode de lecture' },
