@@ -720,7 +720,7 @@ body.sorting-hat-expanded {overflow:hidden}
  <h2>Affichage</h2><label class="animation-option"><input id="animation-toggle" type="checkbox" checked><span>Activer les animations</span></label><div class="photo-modes"><button type="button" id="layout-grid-toggle" aria-pressed="false" aria-label="Afficher ou masquer la grille de mise en page">Grille A–L · 1–16</button></div>
  <div class="menu-actions"><button id="share-edition" type="button">Partager</button><button id="print-edition" type="button">Imprimer</button><a class="menu-repository" href="https://github.com/yohikofox/gazette-abel" target="_blank" rel="noopener noreferrer">Dépôt GitHub · photos et médias de la Gazette</a></div>
 <div class="menu-actions"><button id="install-gazette" type="button">Installer la Gazette</button><p id="install-gazette-help" role="status" aria-live="polite" style="margin:0;font:15px/1.25 'Fell',Georgia,serif"></p></div></aside>
-<div class="share-overlay" id="share-overlay" hidden><section class="share-dialog" role="dialog" aria-modal="true" aria-labelledby="share-title"><button class="share-close" id="share-close" type="button" aria-label="Fermer le partage">×</button><h2 id="share-title">Partager la Gazette</h2><p>Envoyez le lien ou faites scanner le code.</p><input class="share-url" id="share-url" type="url" value="https://yohikofox.github.io/gazette-abel/" readonly aria-label="Lien public de la Gazette"><button class="share-copy" id="share-copy" type="button">Copier le lien</button><div class="share-status" id="share-status" role="status" aria-live="polite"></div><img class="share-qr" src="assets/embedded/share_qr.png" alt="QR code vers la Gazette d’Abel" width="260" height="260"></section></div>
+<div class="share-overlay" id="share-overlay" hidden><section class="share-dialog" role="dialog" aria-modal="true" aria-labelledby="share-title"><button class="share-close" id="share-close" type="button" aria-label="Fermer le partage">×</button><h2 id="share-title">Partager la Gazette</h2><p>Envoyez le lien ou faites scanner le code.</p><input class="share-url" id="share-url" type="url" readonly aria-label="Lien public de la Gazette"><button class="share-copy" id="share-copy" type="button">Copier le lien</button><div class="share-status" id="share-status" role="status" aria-live="polite"></div><div class="share-qr" id="share-qr" role="img" aria-label="QR code vers la Gazette d’Abel"></div></section></div>
 <section class="paper" id="page1">
  <div class="topline"><span>Édition anniversaire</span><span>Mercredi 11 novembre 2026</span><span>Prix : un sourire</span></div>
  <header class="mast"><img data-masthead src="assets/embedded/masthead_en.png" alt="The Daily Prophet"><span class="tiny">Les nouvelles extraordinaires d’une famille tout à fait remarquable</span></header><div class="mastline"></div>
@@ -1906,4 +1906,6 @@ window.addEventListener('resize',fitPages);fitPages();
   navigator.serviceWorker.register('./sw.js').catch(()=>{});
  });}
 })();
-</script></body></html>
+</script><script src="./assets/embedded/qrcode.min.js" defer></script>
+<script src="./assets/embedded/share_dynamic.js" defer></script>
+</body></html>

@@ -30,9 +30,10 @@ git commit -m "Update Gazette site"
 git push origin main
 ```
 
-Le script copie les fichiers, conserve le chemin de base nécessaire à GitHub
-Pages, et adapte le lien ainsi que le QR code du menu Partager. Si la source
-est ailleurs, passer son dossier `dist/` en argument au script.
+Le script copie les fichiers et adapte le menu Partager. Son lien et son QR code
+sont calculés dans le navigateur à partir de l'adresse du site : ils fonctionnent
+sur GitHub Pages comme sur un domaine personnalisé, sans nouveau build. Si la
+source est ailleurs, passer son dossier `dist/` en argument au script.
 
 Dans les paramètres du dépôt GitHub, **Settings → Pages → Build and deployment →
 Source** doit être réglé sur **GitHub Actions**. Le workflow utilise uniquement
