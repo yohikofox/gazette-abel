@@ -5,7 +5,11 @@
   if (!shareButton || !shareUrl || !shareQr) return;
 
   // Keep the deployment path (for example /gazette-abel/) but omit the current page hash.
-  const siteUrl = () => new URL('./', window.location.href).href;
+  const siteUrl = () => {
+    const url = new URL('./', window.location.href);
+    if (new URLSearchParams(window.location.search).get('valerie') === '0') url.searchParams.set('valerie', '0');
+    return url.href;
+  };
   shareUrl.value = siteUrl();
 
   function styledQrSvg(code) {

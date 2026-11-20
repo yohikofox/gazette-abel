@@ -12,6 +12,11 @@ Puis ouvrir <http://localhost:8000/>. L’installation comme application nécess
 
 Version déployée depuis GitHub : <https://yohikofox.github.io/gazette-abel/>
 
+Valérie est visible par défaut. Pour masquer son portrait dans la généalogie,
+son fil de couple avec Michel et son entrée dans la cérémonie du Choixpeau,
+utiliser <https://yohikofox.github.io/gazette-abel/?valerie=0#page5>.
+Ce paramètre ne supprime ni ses portraits ni les données familiales sources.
+
 Site historique : <https://abel-gazette-anniversaire-2026.yoann-lorho.chatgpt.site/>
 
 ## Déploiement GitOps

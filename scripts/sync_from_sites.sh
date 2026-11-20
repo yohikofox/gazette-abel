@@ -10,6 +10,7 @@ find "$repo_dir/dist" -type f -exec chmod 644 {} +
 touch "$repo_dir/dist/.nojekyll"
 
 python3 "$repo_dir/scripts/patch_share.py" "$repo_dir/dist/index.html"
+python3 "$repo_dir/scripts/patch_valerie_visibility.py" "$repo_dir/dist/index.html"
 cp "$repo_dir/scripts/qrcode.min.js" "$repo_dir/dist/assets/embedded/qrcode.min.js"
 cp "$repo_dir/scripts/qrcode.LICENSE" "$repo_dir/dist/assets/embedded/qrcode.LICENSE"
 cp "$repo_dir/scripts/share_dynamic.js" "$repo_dir/dist/assets/embedded/share_dynamic.js"
