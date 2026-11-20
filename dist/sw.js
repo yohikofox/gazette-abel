@@ -1,4 +1,4 @@
-const CACHE='gazette-abel-a902d3800d9d';
+const CACHE='gazette-abel-2f2439b9eded';
 const SHELL=["./", "./index.html", "./articles_temporaires.html", "./manifest.webmanifest", "./icons/gazette-192.png", "./icons/gazette-512.png", "./icons/gazette-180.png"];
 self.addEventListener('install',event=>event.waitUntil(caches.open(CACHE).then(cache=>cache.addAll(SHELL)).then(()=>self.skipWaiting())));
 self.addEventListener('activate',event=>event.waitUntil((async()=>{for(const key of await caches.keys())if(key.startsWith('gazette-abel-')&&key!==CACHE)await caches.delete(key);await self.clients.claim()})()));
