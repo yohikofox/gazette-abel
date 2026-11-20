@@ -17,8 +17,10 @@ if script not in html:
     html = html.replace('</body></html>', script + '</body></html>', 1)
 if controls not in html:
     html = html.replace('<h2>Affichage</h2>', '<h2>Affichage</h2>' + controls, 1)
-# The existing swipe handler already distinguishes horizontal and vertical gestures.
-# Use the actual reader state so a forced mobile layout also works on a wide screen.
+# Keep swipes for the classic page reader and use section anchors in the
+# continuous mobile layout, including when that layout is forced on desktop.
 html = html.replace("if(window.innerWidth>900||readerZoom!==null", "if(document.body.dataset.mobileReader!=='true'||readerZoom!==null")
+html = html.replace("if(document.body.dataset.mobileReader!=='true'||readerZoom!==null", "if(document.body.dataset.readerLayout==='mobile'||document.body.dataset.mobileReader!=='true'||readerZoom!==null")
 html = html.replace("[role=\"button\"],[contenteditable=\"true\"]'))return;", "[role=\"button\"],[contenteditable=\"true\"],.sorting-layout,.map-ad-mapframe,.genealogy-fullscreen-tapestry'))return;")
+html = html.replace("if(scrollTop&&mobile){readerViews[index].scrollLeft=0;readerViews[index].scrollTop=0;window.scrollTo(0,0)}", "if(scrollTop&&document.body.dataset.readerLayout==='mobile'){readerPages[index].scrollIntoView({block:'start'})}\n else if(scrollTop&&mobile){readerViews[index].scrollLeft=0;readerViews[index].scrollTop=0;window.scrollTo(0,0)}")
 page.write_text(html)

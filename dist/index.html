@@ -1848,7 +1848,9 @@ function updateMobileReader(scrollTop=false){
  const labels=fr?['Page précédente','Page suivante','Réduire la page','Ajuster la page à l’écran','Agrandir la page','Lecture mobile']:['Previous page','Next page','Zoom out','Fit whole page','Zoom in','Mobile reader'];
  ['reader-prev','reader-next','reader-minus','reader-fit','reader-plus'].forEach((id,i)=>document.getElementById(id).setAttribute('aria-label',labels[i]));
  document.querySelector('.mobile-reader').setAttribute('aria-label',labels[5]);
- if(scrollTop&&mobile){readerViews[index].scrollLeft=0;readerViews[index].scrollTop=0;window.scrollTo(0,0)}
+ if(scrollTop&&document.body.dataset.readerLayout==='mobile'){readerPages[index].scrollIntoView({block:'start'})}
+ else if(scrollTop&&document.body.dataset.readerLayout==='mobile'){readerPages[index].scrollIntoView({block:'start'})}
+ else if(scrollTop&&mobile){readerViews[index].scrollLeft=0;readerViews[index].scrollTop=0;window.scrollTo(0,0)}
 }
 function fitPages(){
  const w=window.innerWidth,mobile=w<=900,pw=1122,ph=1587,fit=Math.min(1,(w-18)/pw);
@@ -1870,7 +1872,7 @@ readerViews.forEach(view=>{
  let swipeStart=null;
  view.addEventListener('touchstart',event=>{
   swipeStart=null;
-  if(document.body.dataset.mobileReader!=='true'||readerZoom!==null||document.fullscreenElement||document.body.dataset.menuOpen==='true'||!view.classList.contains('is-current')||event.touches.length!==1)return;
+  if(document.body.dataset.readerLayout==='mobile'||document.body.dataset.mobileReader!=='true'||readerZoom!==null||document.fullscreenElement||document.body.dataset.menuOpen==='true'||!view.classList.contains('is-current')||event.touches.length!==1)return;
   if(event.target instanceof Element&&event.target.closest('button,a,input,select,textarea,[role="button"],[contenteditable="true"],.sorting-layout,.map-ad-mapframe,.genealogy-fullscreen-tapestry'))return;
   swipeStart={x:event.touches[0].clientX,y:event.touches[0].clientY};
  },{passive:true});

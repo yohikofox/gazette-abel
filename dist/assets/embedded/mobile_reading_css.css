@@ -79,4 +79,18 @@ body[data-reader-layout="mobile"] .genealogy-paper:not(:fullscreen) .genealogy-r
 body[data-reader-layout="mobile"] .genealogy-paper:not(:fullscreen) .genealogy-expand{position:relative!important;top:auto!important;right:auto!important;display:block!important;width:100%;margin:90px auto 20px!important;white-space:normal;text-align:center}
 body[data-reader-layout="mobile"] .genealogy-paper:not(:fullscreen):after{content:'Touchez pour explorer la toile généalogique en plein écran';display:block;position:relative;font:italic 20px/1.3 'Fell',Georgia,serif;text-align:center;padding:10px}
 body[data-reader-layout="mobile"] .paper:not(:fullscreen) .layout-grid{display:none!important}
+/* One continuous article stream; the classic page reader remains available. */
+html:has(body[data-reader-layout="mobile"]){scroll-behavior:auto!important}
+body[data-reader-layout="mobile"]{overflow-x:hidden!important;overflow-y:auto!important}
+body[data-reader-layout="mobile"] .paper-viewport,
+body[data-reader-layout="mobile"] .paper-viewport:not(.is-current){position:relative!important;inset:auto!important;display:block!important;height:auto!important;overflow:visible!important;margin:0 auto!important}
+body[data-reader-layout="mobile"] .paper-stage{height:auto!important}
+body[data-reader-layout="mobile"] .paper-stage>.paper:not(:fullscreen){min-height:0!important;padding-top:26px!important;scroll-margin-top:70px!important;box-shadow:none!important}
+body[data-reader-layout="mobile"] .paper:not(:fullscreen):before{border-top:0!important;border-bottom:0!important}
+body[data-reader-layout="mobile"] .paper-stage>#page1{padding-top:76px!important}
+body[data-reader-layout="mobile"] .mobile-reader{display:none!important}
+body[data-reader-layout="mobile"] .paper:not(:fullscreen) :is(.footer,.poster-footer,.gang-footer){display:none!important}
+body[data-reader-layout="mobile"] .site-footer{display:block!important;margin:8px auto 25px}
+body[data-reader-layout="mobile"] .genealogy-paper:not(:fullscreen){min-height:270px!important}
+body[data-reader-layout="mobile"] .genealogy-paper:not(:fullscreen) .genealogy-expand{margin:40px auto 20px!important}
 }

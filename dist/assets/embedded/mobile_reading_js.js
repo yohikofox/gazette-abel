@@ -14,13 +14,8 @@
   function apply() {
     const layout = preference === 'auto' ? (phone() ? 'mobile' : 'journal') : preference;
     document.body.dataset.readerLayout = layout;
-    // The original page reader is sized from the viewport. Its swipe and page
-    // controls also work when mobile reading has been selected on a desktop.
+    // The classic reader still sizes pages; CSS lays them out in one stream.
     if (layout === 'mobile') document.body.dataset.mobileReader = 'true';
-    if (layout === 'mobile') {
-      const toolbar = document.querySelector('.mobile-reader');
-      document.documentElement.style.setProperty('--reader-toolbar-height', `${toolbar.getBoundingClientRect().height || 68}px`);
-    }
     buttons.forEach(button => button.setAttribute('aria-pressed', String(button.dataset.readerChoice === preference)));
     const fr = typeof currentEditionLanguage === 'undefined' || currentEditionLanguage === 'fr';
     const labels = text[fr ? 'fr' : 'en'];
@@ -34,9 +29,16 @@
     if (typeof readerZoom !== 'undefined') readerZoom = null;
     if (typeof fitPages === 'function') fitPages();
     apply();
-    document.querySelector('.paper-viewport.is-current')?.scrollTo(0, 0);
+    if (document.body.dataset.readerLayout === 'mobile') {
+      document.querySelector(`#page${readerIndex() + 1}`)?.scrollIntoView({ block: 'start' });
+    } else {
+      document.querySelector('.paper-viewport.is-current')?.scrollTo(0, 0);
+    }
   }));
   document.querySelectorAll('[data-header-language]').forEach(button => button.addEventListener('click', () => requestAnimationFrame(apply)));
   window.addEventListener('resize', apply);
   apply();
+  if (document.body.dataset.readerLayout === 'mobile' && /^#page(?:[1-9]|1[0-3])$/.test(location.hash)) {
+    requestAnimationFrame(() => document.querySelector(location.hash)?.scrollIntoView({ block: 'start' }));
+  }
 })();
