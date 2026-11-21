@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Choixpeau mobile — deux maquettes</title>
+<style>
+@font-face{font-family:Fell;src:url(fell.ttf)}
+@font-face{font-family:FellSC;src:url(fell-sc.ttf)}
+@font-face{font-family:Anton;src:url(anton.ttf)}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{background:#211b18;color:#f2dfb6;font-family:Fell,Georgia,serif}
+.board{width:860px;margin:auto;padding:18px 18px 32px;display:grid;grid-template-columns:390px 390px;gap:20px}
+.label{height:52px;display:flex;align-items:center;justify-content:space-between;color:#e7c793;font:15px FellSC,Georgia,serif;letter-spacing:.5px}
+.label strong{font:20px Anton,Impact,sans-serif;letter-spacing:.5px;color:#f7e4be}
+.label span{font-size:12px}
+.phone{width:390px;height:844px;position:relative;overflow:hidden;box-shadow:0 18px 36px #0009;border:2px solid #b79969}
+.phone button{font-family:inherit;cursor:default}
+.paper-phone{background:#dfc692 url(papier.webp) center/100% 100%;color:#291c13;padding:12px 15px 12px}
+.paper-phone:before{content:"";position:absolute;inset:7px;border:1px solid #705335;pointer-events:none}
+.a-top{display:flex;justify-content:space-between;align-items:center;border-block:2px solid #3b2617;padding:4px 2px;font:12px FellSC,Georgia,serif;letter-spacing:.6px}
+.a-top span:last-child{font-size:19px;line-height:12px}
+.a-title{text-align:center;padding:9px 0 4px;border-bottom:5px double #3c281a}
+.a-title .eyebrow{display:block;font:11px FellSC,Georgia,serif;letter-spacing:2px}
+.a-title h1{font:32px/.95 Anton,Impact,sans-serif;text-transform:uppercase;margin:3px 0 0;letter-spacing:.7px}
+.person-a{display:flex;align-items:center;gap:9px;width:100%;height:52px;margin:9px 0 0;padding:4px 9px;background:#39261b;border:2px solid #b28d54;color:#f8e9c7;text-align:left;box-shadow:inset 0 0 0 2px #2a1a12}
+.person-a img{width:38px;height:38px;object-fit:contain;border-radius:50%;background:#d9bd89}
+.person-a strong{display:block;font:19px FellSC,Georgia,serif;line-height:1}
+.person-a small{display:block;font:12px Fell,Georgia,serif}
+.person-a em{font-style:normal;font-size:25px;margin-left:auto}
+.hat-stage-a{height:170px;margin-top:9px;position:relative;background:radial-gradient(ellipse at 50% 42%,#745238 0,#3e2a1f 58%,#211813 100%);border:5px double #a57f48;overflow:hidden;text-align:center}
+.hat-stage-a:before,.hat-stage-a:after{content:"✦";position:absolute;top:12px;color:#d7b67b;font-size:19px}
+.hat-stage-a:before{left:14px}.hat-stage-a:after{right:14px}
+.hat-stage-a img{width:280px;height:280px;object-fit:cover;object-position:center;display:block;margin:-45px auto 0;mix-blend-mode:lighten;filter:brightness(1.18)}
+.hat-stage-a .voice{position:absolute;bottom:5px;right:6px;background:#241911db;color:#f5ddaf;border:1px solid #aa8454;font:12px FellSC,Georgia,serif;padding:4px 8px}
+.progress-a{display:flex;align-items:center;justify-content:center;gap:7px;margin:9px 0 6px;font:13px FellSC,Georgia,serif;letter-spacing:.5px}
+.progress-a .star{font-size:15px;color:#4b3425}.progress-a .dim{opacity:.35}
+.question-a{padding:8px 10px 7px;border-block:3px double #4b321f;text-align:center;background:#f0dfb56b}
+.question-a .kicker{font:11px FellSC,Georgia,serif;letter-spacing:1.5px;text-transform:uppercase}
+.question-a h2{font:22px/1.06 FellSC,Georgia,serif;margin:4px 0 0}
+.answers-a{display:grid;gap:6px;margin-top:8px}
+.answers-a button{min-height:57px;display:flex;align-items:center;gap:10px;text-align:left;border:1.5px solid #694b31;background:#f1dfb7c7;color:#2d2018;padding:6px 9px;font:14px/1.12 Fell,Georgia,serif;box-shadow:inset 0 0 0 2px #fff4d0a3}
+.answers-a b{flex:none;display:grid;place-items:center;width:28px;height:28px;border:1px solid #6f4b2c;border-radius:50%;font:16px FellSC,Georgia,serif}
+.a-bottom{display:flex;justify-content:space-between;align-items:center;margin-top:8px;border-top:2px solid #422a19;padding-top:4px;font:11px FellSC,Georgia,serif}
+.a-bottom .mark{font-size:15px}
+.chamber-phone{padding:13px 14px 12px;color:#f4dfb7;background:radial-gradient(circle at 50% 11%,#6f3d2d 0,#39231f 34%,#201a1a 75%,#171414 100%)}
+.chamber-phone:before{content:"";position:absolute;inset:7px;border:2px solid #9a7047;pointer-events:none;box-shadow:inset 0 0 0 3px #2b201d}
+.chamber-phone:after{content:"✧";position:absolute;top:6px;left:50%;transform:translateX(-50%);font-size:21px;color:#d1a866}
+.b-top{display:flex;align-items:center;justify-content:space-between;margin-top:14px;padding-bottom:8px;border-bottom:1px solid #b69361;font:12px FellSC,Georgia,serif;letter-spacing:1px}
+.b-top .sigil{border:1px solid #b9945b;padding:4px 6px;font-size:16px;line-height:1;color:#e4c991}
+.b-title{text-align:center;margin:8px 0 0}
+.b-title h1{font:24px/.95 FellSC,Georgia,serif;margin:0;text-transform:uppercase;letter-spacing:.8px}
+.b-title span{font:italic 12px Fell,Georgia,serif;color:#e2bf92}
+.b-person{display:flex;justify-content:space-between;align-items:center;margin-top:9px;font:13px FellSC,Georgia,serif}
+.b-person strong{font-size:18px;color:#f5dcaa}
+.b-person .change{border-bottom:1px solid #d3aa6b;color:#d3aa6b;font-size:12px}
+.b-hat{position:relative;height:185px;margin-top:3px;overflow:hidden;text-align:center;background:radial-gradient(ellipse at 50% 46%,#7a4b2f 0,#4b2e25 46%,transparent 72%)}
+.b-hat img{width:300px;height:300px;object-fit:cover;display:block;margin:-45px auto 0;mix-blend-mode:lighten;filter:brightness(1.18)}
+.b-hat .stars{position:absolute;left:12px;top:43px;font:24px FellSC,Georgia,serif;color:#bf9760;letter-spacing:5px;writing-mode:vertical-rl}
+.b-hat .voice{position:absolute;right:4px;bottom:7px;border:1px solid #ad8656;color:#ead5ae;padding:4px 7px;background:#281c1a;font:12px FellSC,Georgia,serif}
+.b-progress{display:flex;align-items:center;gap:8px;margin:5px 4px 7px;color:#ead1a1;font:12px FellSC,Georgia,serif;letter-spacing:1px}
+.b-progress .line{height:4px;flex:1;background:linear-gradient(90deg,#dcb16c 50%,#6f5942 50%);border:1px solid #b18d58}
+.b-question{position:relative;padding:10px 12px 9px;text-align:center;color:#2f2118;background:#e8d3a6 url(papier.webp) center/cover;border:4px double #c7a16a;box-shadow:0 7px 18px #0007}
+.b-question:before,.b-question:after{content:"✦";position:absolute;top:10px;color:#705033}
+.b-question:before{left:8px}.b-question:after{right:8px}
+.b-question .kicker{font:11px FellSC,Georgia,serif;letter-spacing:1px;text-transform:uppercase}
+.b-question h2{font:21px/1.1 FellSC,Georgia,serif;margin:4px 8px 0}
+.answers-b{display:grid;gap:7px;margin-top:10px}
+.answers-b button{display:flex;align-items:center;gap:10px;min-height:54px;padding:6px 10px;width:100%;background:#352621;color:#f3dfb8;border:1px solid #b28c59;text-align:left;font:14px/1.12 Fell,Georgia,serif;box-shadow:inset 0 0 0 2px #211916,inset 3px 0 0 #bb9460}
+.answers-b b{flex:none;display:grid;place-items:center;width:28px;height:28px;border:1px solid #c9a66e;transform:rotate(45deg);font:14px FellSC,Georgia,serif;color:#e9ce9c}
+.answers-b b span{transform:rotate(-45deg)}
+.b-bottom{text-align:center;margin-top:9px;color:#d0ad77;font:11px FellSC,Georgia,serif;letter-spacing:.4px}
+.b-houses{position:absolute;left:25px;right:25px;bottom:22px;border-top:1px solid #946e48;padding-top:8px;text-align:center;color:#d6b788;font:11px/1.2 FellSC,Georgia,serif;letter-spacing:.25px}
+</style>
+</head>
+<body>
+<main class="board">
+<div><div class="label"><strong>A · La Gazette</strong><span>Parchemin illustré</span></div>
+<section class="phone paper-phone" id="option-a" aria-label="Maquette A, parchemin illustré">
+ <div class="a-top"><span>LA GAZETTE D’ABEL · POUDLARD</span><span>×</span></div>
+ <div class="a-title"><span class="eyebrow">Édition de la répartition</span><h1>La cérémonie du Choixpeau</h1></div>
+ <button class="person-a"><img src="elie.webp" alt=""><span><strong>Élie</strong><small>Changer de prénom</small></span><em>⌄</em></button>
+ <div class="hat-stage-a"><img src="choixpeau-3d.png" alt="Choixpeau 3D"><span class="voice">◖)) Voix activée</span></div>
+ <div class="progress-a"><span>QUESTION 2 / 4</span><span class="star">✦ ✦ <span class="dim">✧ ✧</span></span></div>
+ <div class="question-a"><span class="kicker">Le Choixpeau demande</span><h2>Le train s’arrête au milieu du trajet. Que fais-tu en premier ?</h2></div>
+ <div class="answers-a">
+  <button><b>A</b><span>J’agis tout de suite pour que personne ne reste bloqué.</span></button>
+  <button><b>B</b><span>Je vérifie que chacun va bien et répartis les tâches.</span></button>
+  <button><b>C</b><span>J’observe ce qui a changé avant de choisir une solution.</span></button>
+  <button><b>D</b><span>Je trouve un détour qui garde l’objectif en vue.</span></button>
+ </div>
+ <div class="a-bottom"><span class="mark">✦</span><span>UNE RÉPONSE, PUIS LA SUITE</span><span class="mark">✦</span></div>
+</section></div>
+<div><div class="label"><strong>B · La salle du Choixpeau</strong><span>Théâtral et immersif</span></div>
+<section class="phone chamber-phone" id="option-b" aria-label="Maquette B, salle du Choixpeau">
+ <div class="b-top"><span class="sigil">A</span><span>LA CÉRÉMONIE</span><span>× FERMER</span></div>
+ <div class="b-title"><h1>Le Choixpeau t’attend</h1><span>Quatre réponses avant son verdict</span></div>
+ <div class="b-person"><span>AU TOUR DE <strong>ÉLIE</strong></span><span class="change">Changer ↗</span></div>
+ <div class="b-hat"><span class="stars">✦ ✧ ✦</span><img src="choixpeau-3d.png" alt="Choixpeau 3D"><span class="voice">◖)) Écouter</span></div>
+ <div class="b-progress"><span>II / IV</span><span class="line"></span><span>QUESTION</span></div>
+ <div class="b-question"><span class="kicker">Le Choixpeau murmure…</span><h2>Le train s’arrête au milieu du trajet. Que fais-tu en premier ?</h2></div>
+ <div class="answers-b">
+  <button><b><span>A</span></b><span>J’agis tout de suite pour que personne ne reste bloqué.</span></button>
+  <button><b><span>B</span></b><span>Je vérifie que chacun va bien et répartis les tâches.</span></button>
+  <button><b><span>C</span></b><span>J’observe ce qui a changé avant de choisir une solution.</span></button>
+  <button><b><span>D</span></b><span>Je trouve un détour qui garde l’objectif en vue.</span></button>
+ </div>
+ <div class="b-bottom">✦ LE CHOIXPEAU RETIENT TA RÉPONSE ✦</div>
+ <div class="b-houses">Gryffondor · Poufsouffle · Serdaigle · Serpentard</div>
+</section></div>
+</main>
+</body>
+</html>

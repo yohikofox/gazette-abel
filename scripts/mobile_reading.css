@@ -94,3 +94,69 @@ body[data-reader-layout="mobile"] .site-footer{display:block!important;margin:8p
 body[data-reader-layout="mobile"] .genealogy-paper:not(:fullscreen){min-height:270px!important}
 body[data-reader-layout="mobile"] .genealogy-paper:not(:fullscreen) .genealogy-expand{margin:40px auto 20px!important}
 }
+
+/* The V1 sorting ceremony follows the light Gazette mockup on mobile. */
+.sorting-mobile-person,.sorting-mobile-register-close{display:none}
+@media screen{
+body[data-reader-layout="mobile"] #page10 .topline,
+body[data-reader-layout="mobile"] #page10 .sorting-deck,
+body[data-reader-layout="mobile"] #page10 .sorting-rule,
+body[data-reader-layout="mobile"] #page10 .sorting-bottom{display:none!important}
+body[data-reader-layout="mobile"] #page10 .sorting-title{font-size:clamp(34px,10vw,43px)!important;line-height:.98!important;text-align:center;margin:13px 0 12px!important;padding:8px 0 7px!important;border-top:3px double var(--rule);border-bottom:5px double var(--rule)}
+body[data-reader-layout="mobile"] #page10 .sorting-layout{display:flex!important;flex-direction:column!important;gap:9px!important;height:auto!important}
+body[data-reader-layout="mobile"] #page10 .sorting-mobile-person{display:block;order:0;width:100%}
+body[data-reader-layout="mobile"] #page10 .sorting-mobile-eyebrow{display:block;margin:0 0 4px;text-align:center;font:12px 'Fell SC',Georgia,serif;letter-spacing:1.2px;text-transform:uppercase}
+body[data-reader-layout="mobile"] #page10 .sorting-mobile-person-button{display:flex;align-items:center;gap:10px;width:100%;min-height:60px;padding:7px 10px;border:2px solid #b28d54;background:#39261b;color:#f8e9c7;text-align:left;box-shadow:inset 0 0 0 2px #2a1a12;font:18px 'Fell SC',Georgia,serif;cursor:pointer}
+body[data-reader-layout="mobile"] #page10 .sorting-mobile-person-button img{width:43px;height:43px;object-fit:contain;flex:none;border-radius:50%;background:#d9bd89}
+body[data-reader-layout="mobile"] #page10 .sorting-mobile-person-button img[hidden]{display:none!important}
+body[data-reader-layout="mobile"] #page10 .sorting-mobile-person-button span{min-width:0;flex:1}
+body[data-reader-layout="mobile"] #page10 .sorting-mobile-person-button strong{display:block;font:23px/1 'Fell SC',Georgia,serif}
+body[data-reader-layout="mobile"] #page10 .sorting-mobile-person-button small{display:block;margin-top:3px;font:15px/1.1 'Fell',Georgia,serif}
+body[data-reader-layout="mobile"] #page10 .sorting-mobile-person-button em{font:29px/1 Georgia,serif;font-style:normal}
+body[data-reader-layout="mobile"] #page10 .sorting-register{display:none!important}
+body[data-reader-layout="mobile"] #page10 .sorting-layout[data-mobile-register-open="true"] .sorting-register{display:block!important;position:fixed!important;z-index:400!important;inset:0!important;left:50%!important;transform:translateX(-50%)!important;width:min(100vw,540px)!important;height:100dvh!important;max-height:100dvh!important;margin:0!important;padding:calc(18px + env(safe-area-inset-top)) 18px calc(20px + env(safe-area-inset-bottom))!important;overflow-y:auto!important;overscroll-behavior:contain!important;border:6px double #5a4028!important;background:#dec79b url('paper.webp') center/cover!important;box-shadow:0 0 0 100vmax #17110ce8!important}
+body[data-reader-layout="mobile"] #page10 .sorting-mobile-register-close{display:block;width:100%;min-height:46px;margin:0 0 12px;padding:8px;border:1px solid #5a4028;background:#39261b;color:#f5e3be;text-align:right;font:17px 'Fell SC',Georgia,serif;cursor:pointer}
+body[data-reader-layout="mobile"] #page10 .sorting-register h2{font-size:36px!important;border-bottom:4px double var(--rule);padding-bottom:6px}
+body[data-reader-layout="mobile"] #page10 .sorting-register p{font-size:17px!important;line-height:1.2!important}
+body[data-reader-layout="mobile"] #page10 .sorting-search{min-height:50px!important;font-size:19px!important}
+body[data-reader-layout="mobile"] #page10 .sorting-roster{height:calc(100dvh - 355px)!important;min-height:220px!important}
+body[data-reader-layout="mobile"] #page10 .sorting-person{min-height:58px!important;padding:6px 4px!important;font-size:20px!important}
+body[data-reader-layout="mobile"] #page10 .sorting-person img{width:46px!important;height:46px!important}
+body[data-reader-layout="mobile"] #page10 .sorting-person small{font-size:13px!important}
+body[data-reader-layout="mobile"] #page10 .sorting-stage{order:1;display:flex!important;flex-direction:column!important;gap:8px!important;width:100%!important;min-height:0!important;padding:0!important;border:0!important;background:transparent!important}
+body[data-reader-layout="mobile"] #page10 .sorting-intro{height:auto!important;min-height:0!important;gap:9px}
+body[data-reader-layout="mobile"] #page10 #sorting-hat-intro-slot,
+body[data-reader-layout="mobile"] #page10 .sorting-hat-active-slot{display:grid!important;place-items:center!important;width:100%!important;height:210px!important;min-height:210px!important;position:relative;border:5px double #a57f48;background:radial-gradient(ellipse at 50% 42%,#745238 0,#3e2a1f 58%,#211813 100%);overflow:hidden}
+body[data-reader-layout="mobile"] #page10 #sorting-hat-intro-slot:before,
+body[data-reader-layout="mobile"] #page10 .sorting-hat-active-slot:before{content:'✦';position:absolute;top:11px;left:12px;color:#d7b67b;font:20px Georgia,serif}
+body[data-reader-layout="mobile"] #page10 #sorting-hat-intro-slot:after,
+body[data-reader-layout="mobile"] #page10 .sorting-hat-active-slot:after{content:'✦';position:absolute;top:11px;right:12px;color:#d7b67b;font:20px Georgia,serif}
+body[data-reader-layout="mobile"] #page10 .sorting-hat-view{width:min(77%,265px)!important;height:205px!important;max-width:none!important;flex:none!important;margin:0 auto!important}
+body[data-reader-layout="mobile"] #page10 .sorting-intro-mark{font-size:130px!important;color:#d7b67b!important}
+body[data-reader-layout="mobile"] #page10 .sorting-intro h2{font-size:29px!important;margin:4px 0 0}
+body[data-reader-layout="mobile"] #page10 .sorting-intro p{font-size:17px!important;line-height:1.25!important;margin:0!important}
+body[data-reader-layout="mobile"] #page10 .sorting-house-line{font-size:13px!important;margin:8px 0 0!important;gap:5px!important}
+body[data-reader-layout="mobile"] #page10 .sorting-house-line span{padding:3px 5px}
+body[data-reader-layout="mobile"] #page10 .sorting-person-head{display:block!important;min-height:0!important;border:0!important;padding:0!important}
+body[data-reader-layout="mobile"] #page10 .sorting-person-head>img,
+body[data-reader-layout="mobile"] #page10 .sorting-person-head>div:not(.sorting-hat-active-slot){display:none!important}
+body[data-reader-layout="mobile"] #page10 .sorting-voice-controls{position:relative;z-index:2;justify-content:flex-end!important;gap:6px!important;min-height:0!important;margin:-48px 8px 10px!important}
+body[data-reader-layout="mobile"] #page10 .sorting-voice-controls button{min-height:37px;padding:5px 8px;background:#241911e8;color:#f5ddaf;border:1px solid #aa8454;font-size:14px}
+body[data-reader-layout="mobile"] #page10 .sorting-voice-controls span{display:none!important}
+body[data-reader-layout="mobile"] #page10 .sorting-progress{margin:5px 0 0!important;text-align:center;font-size:16px!important;letter-spacing:.7px}
+body[data-reader-layout="mobile"] #page10 .sorting-progress-track{height:5px!important}
+body[data-reader-layout="mobile"] #page10 .sorting-question{padding:8px 0 0!important}
+body[data-reader-layout="mobile"] #page10 .sorting-question h2{margin:0 0 9px!important;padding:12px 9px!important;background:#f0dfb56b;border-top:3px double #4b321f;border-bottom:3px double #4b321f;text-align:center;font:normal 23px/1.12 'Fell SC',Georgia,serif!important}
+body[data-reader-layout="mobile"] #page10 .sorting-answers{gap:7px!important}
+body[data-reader-layout="mobile"] #page10 .sorting-answer{min-height:59px!important;padding:7px 9px!important;gap:9px!important;border:1.5px solid #694b31;background:#f1dfb7c7;color:#2d2018;box-shadow:inset 0 0 0 2px #fff4d0a3;font:17px/1.14 'Fell',Georgia,serif!important}
+body[data-reader-layout="mobile"] #page10 .sorting-answer b{display:grid;place-items:center;flex:none;min-width:30px;width:30px;height:30px;border:1px solid #6f4b2c;border-radius:50%;font:18px 'Fell SC',Georgia,serif}
+body[data-reader-layout="mobile"] #page10 .sorting-answer:hover{transform:none}
+body[data-reader-layout="mobile"] #page10 .sorting-actions{margin:10px 0 0!important}
+body[data-reader-layout="mobile"] #page10 #sorting-back{display:none!important}
+body[data-reader-layout="mobile"] #page10 .sorting-action{min-height:46px;font-size:18px}
+body[data-reader-layout="mobile"] #page10 .sorting-result .sorting-house-name{font-size:clamp(35px,11vw,52px)!important}
+body[data-reader-layout="mobile"] #page10 .sorting-credit{margin:18px 0 0;text-align:center;line-height:1.25}
+body.sorting-mobile-register-open .paper-viewport:has(#page10){z-index:350!important}
+body.sorting-mobile-register-open .menu-toggle{opacity:0;pointer-events:none}
+html:has(body.sorting-mobile-register-open),body.sorting-mobile-register-open{overflow:hidden!important}
+}
