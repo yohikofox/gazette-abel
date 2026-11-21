@@ -420,23 +420,25 @@ body[data-photo-mode="presse"][data-circle-video="on"]:not([data-circle-video-er
 .genealogy-expand { position:absolute; top:20px; right:20px; z-index:12; padding:8px 13px; border:2px solid #c8ac76; border-radius:3px; background:#27241e; color:#ead8aa; font:18px/1 'Fell SC',Georgia,serif; cursor:pointer; box-shadow:0 2px 7px #0008; }
 .genealogy-expand:before { content:'⛶'; margin-right:8px; }
 .genealogy-expand:hover,.genealogy-expand:focus-visible { background:#4b3d2a; outline:2px solid #ead8aa; outline-offset:2px; }
-.genealogy-paper:fullscreen { width:100vw !important; height:100vh !important; margin:0 !important; padding:0 !important; transform:none !important; overflow:hidden; background:#27241e; }
-.genealogy-paper:fullscreen .genealogy-rotated { display:none; }
-.genealogy-paper:fullscreen .genealogy-expand { position:fixed; top:max(12px,env(safe-area-inset-top)); right:max(12px,env(safe-area-inset-right)); }
+.genealogy-paper:is(:fullscreen,.genealogy-faux-fullscreen) { width:100vw !important; height:100vh !important; margin:0 !important; padding:0 !important; transform:none !important; overflow:hidden; background:#27241e; }
+.genealogy-paper:is(:fullscreen,.genealogy-faux-fullscreen) .genealogy-rotated { display:none; }
+.genealogy-paper:is(:fullscreen,.genealogy-faux-fullscreen) .genealogy-expand { position:fixed; top:max(12px,env(safe-area-inset-top)); right:max(12px,env(safe-area-inset-right)); }
+.genealogy-paper.genealogy-faux-fullscreen { position:fixed !important; inset:0 !important; z-index:500 !important; width:100vw !important; height:100dvh !important; max-width:none !important; }
+body.genealogy-faux-fullscreen-open,html:has(body.genealogy-faux-fullscreen-open) { overflow:hidden !important; }
 .genealogy-fullscreen-tapestry { display:none; position:absolute; width:2172px; height:724px; overflow:hidden; }
-.genealogy-paper:fullscreen .genealogy-fullscreen-tapestry { display:block; left:var(--gene-left); top:var(--gene-top); transform:scale(var(--gene-scale)); transform-origin:top left; touch-action:none; user-select:none; -webkit-user-select:none; cursor:grab; }
-.genealogy-paper:fullscreen .genealogy-fullscreen-tapestry:active { cursor:grabbing; }
+.genealogy-paper:is(:fullscreen,.genealogy-faux-fullscreen) .genealogy-fullscreen-tapestry { display:block; left:var(--gene-left); top:var(--gene-top); transform:scale(var(--gene-scale)); transform-origin:top left; touch-action:none; user-select:none; -webkit-user-select:none; cursor:grab; }
+.genealogy-paper:is(:fullscreen,.genealogy-faux-fullscreen) .genealogy-fullscreen-tapestry:active { cursor:grabbing; }
 .genealogy-fullscreen-tapestry img { -webkit-user-drag:none; user-select:none; }
 .genealogy-fullscreen-tools { display:none; }
-.genealogy-paper:fullscreen .genealogy-fullscreen-tools { display:flex; position:fixed; z-index:20; left:50%; bottom:max(12px,env(safe-area-inset-bottom)); transform:translateX(-50%); align-items:center; gap:6px; max-width:calc(100vw - 24px); padding:6px; border:1px solid #c8ac76; border-radius:9px; background:#211e1be8; box-shadow:0 2px 12px #000a; color:#f4e6c8; font:15px/1.1 'Fell',Georgia,serif; white-space:nowrap; }
+.genealogy-paper:is(:fullscreen,.genealogy-faux-fullscreen) .genealogy-fullscreen-tools { display:flex; position:fixed; z-index:20; left:50%; bottom:max(12px,env(safe-area-inset-bottom)); transform:translateX(-50%); align-items:center; gap:6px; max-width:calc(100vw - 24px); padding:6px; border:1px solid #c8ac76; border-radius:9px; background:#211e1be8; box-shadow:0 2px 12px #000a; color:#f4e6c8; font:15px/1.1 'Fell',Georgia,serif; white-space:nowrap; }
 .genealogy-fullscreen-tools button { min-width:44px; min-height:44px; padding:5px 9px; border:1px solid #a68b61; border-radius:5px; background:#3b3228; color:#f4e6c8; font:20px/1 'Fell SC',Georgia,serif; cursor:pointer; touch-action:manipulation; }
 .genealogy-fullscreen-tools button:hover,.genealogy-fullscreen-tools button:focus-visible { background:#655035; outline:2px solid #f4e6c8; outline-offset:1px; }
 .genealogy-fullscreen-tools button:disabled { opacity:.45; cursor:default; }
 .genealogy-fullscreen-tools .genealogy-zoom-reset { font-size:15px; }
 .genealogy-zoom-value { min-width:45px; text-align:center; font:16px/1 'Fell SC',Georgia,serif; }
 .genealogy-gesture-hint { padding:0 7px; border-left:1px solid #9e835a; font-size:13px; }
-.genealogy-paper:fullscreen.genealogy-used-gesture .genealogy-gesture-hint { display:none; }
-@media(max-width:640px) { .genealogy-gesture-hint { position:absolute; bottom:calc(100% + 7px); left:50%; transform:translateX(-50%); padding:7px 10px; border:1px solid #c8ac76; border-radius:5px; background:#211e1be8; } .genealogy-paper:fullscreen .genealogy-expand { padding:9px 10px; font-size:15px; } }
+.genealogy-paper:is(:fullscreen,.genealogy-faux-fullscreen).genealogy-used-gesture .genealogy-gesture-hint { display:none; }
+@media(max-width:640px) { .genealogy-gesture-hint { position:absolute; bottom:calc(100% + 7px); left:50%; transform:translateX(-50%); padding:7px 10px; border:1px solid #c8ac76; border-radius:5px; background:#211e1be8; } .genealogy-paper:is(:fullscreen,.genealogy-faux-fullscreen) .genealogy-expand { padding:9px 10px; font-size:15px; } }
 .genealogy-tapestry-background { position:absolute; inset:0; width:100%; height:100%; }
 .genealogy-tapestry-person { position:absolute; z-index:2; left:var(--x); top:var(--y); width:var(--portrait-size); text-align:center; transform:translate(-50%,-70%); filter:drop-shadow(0 2px 4px #00130ddd); }
 .genealogy-tapestry-person img { display:block; width:var(--portrait-size); height:var(--portrait-size); object-fit:contain; object-position:center bottom; }
@@ -458,7 +460,7 @@ body[data-photo-mode="presse"] .genealogy-heading h1 { font-size:44px; }
 .genealogy-stage-press { display:none; }
 body[data-photo-mode="presse"] .genealogy-stage-color { display:none; }
 body[data-photo-mode="presse"] .genealogy-stage-press { display:block; height:890px; background-image:url('assets/embedded/genealogy_press_background.png'); background-size:100% auto; background-position:center; background-repeat:no-repeat; }
-.genealogy-stage-press .genealogy-tree,.genealogy-paper:fullscreen .genealogy-stage-press .genealogy-tree { transform:translateY(30px); }
+.genealogy-stage-press .genealogy-tree,.genealogy-paper:is(:fullscreen,.genealogy-faux-fullscreen) .genealogy-stage-press .genealogy-tree { transform:translateY(30px); }
 .genealogy-stage-press:before,.genealogy-stage-press:after,.genealogy-stage-press .genealogy-ornament { display:none; }
 .genealogy-stage-press .genealogy-lines .leaf { display:none; }
 .genealogy-stage-press .genealogy-lines,.genealogy-stage-press .genealogy-partners,.genealogy-stage-press .genealogy-cords { display:none; }
@@ -1405,6 +1407,7 @@ const genealogyZoomReset=document.getElementById('genealogy-zoom-reset');
 const genealogyZoomValue=document.getElementById('genealogy-zoom-value');
 const genealogyGestureHint=document.getElementById('genealogy-gesture-hint');
 const genealogySize={width:2172,height:724};
+const genealogyExpanded=()=>document.fullscreenElement===genealogyPage||genealogyPage.classList.contains('genealogy-faux-fullscreen');
 const genealogyPointers=new Map();
 let genealogyFitScale=1,genealogyScale=1,genealogyLeft=0,genealogyTop=0,genealogyPinch=null;
 function genealogyViewport(){return {width:genealogyPage.clientWidth||innerWidth,height:genealogyPage.clientHeight||innerHeight}}
@@ -1421,7 +1424,7 @@ function applyGenealogyTransform(){
  genealogyZoomIn.disabled=ratio>=5.999;
 }
 function fitGenealogyFullscreen(){
- if(document.fullscreenElement!==genealogyPage)return;
+ if(!genealogyExpanded())return;
  const {width,height}=genealogyViewport();
  genealogyFitScale=Math.min((width-24)/genealogySize.width,(height-24)/genealogySize.height);
  genealogyScale=genealogyFitScale;
@@ -1430,7 +1433,7 @@ function fitGenealogyFullscreen(){
  genealogyPointers.clear();genealogyPinch=null;applyGenealogyTransform();
 }
 function zoomGenealogyTo(nextScale,clientX,clientY){
- if(document.fullscreenElement!==genealogyPage)return;
+ if(!genealogyExpanded())return;
  const scale=Math.max(genealogyFitScale,Math.min(genealogyFitScale*6,nextScale));
  const worldX=(clientX-genealogyLeft)/genealogyScale,worldY=(clientY-genealogyTop)/genealogyScale;
  genealogyScale=scale;genealogyLeft=clientX-worldX*scale;genealogyTop=clientY-worldY*scale;
@@ -1438,7 +1441,7 @@ function zoomGenealogyTo(nextScale,clientX,clientY){
 }
 function zoomGenealogyBy(factor){const {width,height}=genealogyViewport();zoomGenealogyTo(genealogyScale*factor,width/2,height/2);genealogyPage.classList.add('genealogy-used-gesture')}
 function updateGenealogyExpand(){
- const active=document.fullscreenElement===genealogyPage,fr=currentEditionLanguage==='fr';
+ const active=genealogyExpanded(),fr=currentEditionLanguage==='fr';
  genealogyExpand.querySelector('span').textContent=active?(fr?'Quitter le plein écran':'Exit full screen'):(fr?'Plein écran':'Full screen');
  genealogyExpand.setAttribute('aria-label',active?(fr?'Quitter le plein écran de la tapisserie':'Exit the tapestry full screen'):(fr?'Afficher la tapisserie en plein écran':'Show the tapestry full screen'));
  document.querySelector('.genealogy-fullscreen-tools').setAttribute('aria-label',fr?'Navigation de la tapisserie':'Tapestry navigation');
@@ -1455,7 +1458,7 @@ function startGenealogyPinch(){
  genealogyPinch={distance:Math.max(1,Math.hypot(a.x-b.x,a.y-b.y)),scale:genealogyScale,worldX:(centerX-genealogyLeft)/genealogyScale,worldY:(centerY-genealogyTop)/genealogyScale};
 }
 genealogyCanvas.addEventListener('pointerdown',event=>{
- if(document.fullscreenElement!==genealogyPage||event.pointerType==='mouse'&&event.button!==0)return;
+ if(!genealogyExpanded()||event.pointerType==='mouse'&&event.button!==0)return;
  event.preventDefault();genealogyCanvas.setPointerCapture(event.pointerId);
  genealogyPointers.set(event.pointerId,{x:event.clientX,y:event.clientY});
  if(genealogyPointers.size===2)startGenealogyPinch();
@@ -1476,12 +1479,12 @@ genealogyCanvas.addEventListener('pointerup',endGenealogyPointer);
 genealogyCanvas.addEventListener('pointercancel',endGenealogyPointer);
 genealogyCanvas.addEventListener('dragstart',event=>event.preventDefault());
 genealogyCanvas.addEventListener('dblclick',event=>{event.preventDefault();zoomGenealogyTo(genealogyScale<genealogyFitScale*1.8?genealogyFitScale*2:genealogyFitScale,event.clientX,event.clientY);genealogyPage.classList.add('genealogy-used-gesture')});
-genealogyCanvas.addEventListener('wheel',event=>{if(document.fullscreenElement!==genealogyPage)return;event.preventDefault();const delta=event.deltaY*(event.deltaMode===1?16:event.deltaMode===2?innerHeight:1);zoomGenealogyTo(genealogyScale*Math.exp(-delta*.001),event.clientX,event.clientY);genealogyPage.classList.add('genealogy-used-gesture')},{passive:false});
+genealogyCanvas.addEventListener('wheel',event=>{if(!genealogyExpanded())return;event.preventDefault();const delta=event.deltaY*(event.deltaMode===1?16:event.deltaMode===2?innerHeight:1);zoomGenealogyTo(genealogyScale*Math.exp(-delta*.001),event.clientX,event.clientY);genealogyPage.classList.add('genealogy-used-gesture')},{passive:false});
 genealogyZoomOut.addEventListener('click',()=>zoomGenealogyBy(1/1.5));
 genealogyZoomIn.addEventListener('click',()=>zoomGenealogyBy(1.5));
 genealogyZoomReset.addEventListener('click',()=>{fitGenealogyFullscreen();genealogyPage.classList.add('genealogy-used-gesture')});
 document.addEventListener('keydown',event=>{
- if(document.fullscreenElement!==genealogyPage)return;
+ if(!genealogyExpanded())return;
  if(event.key==='+'||event.key==='='){event.preventDefault();zoomGenealogyBy(1.5)}
  else if(event.key==='-'){event.preventDefault();zoomGenealogyBy(1/1.5)}
  else if(event.key==='0'){event.preventDefault();fitGenealogyFullscreen()}
@@ -1492,7 +1495,27 @@ document.addEventListener('keydown',event=>{
   applyGenealogyTransform();genealogyPage.classList.add('genealogy-used-gesture');
  }
 });
-genealogyExpand.addEventListener('click',async()=>{if(document.fullscreenElement===genealogyPage)await document.exitFullscreen();else{if(document.body.dataset.menuOpen==='true')closeMenu();await genealogyPage.requestFullscreen()}updateGenealogyExpand()});
+function closeGenealogyFallback(){
+ genealogyPage.classList.remove('genealogy-faux-fullscreen');
+ document.body.classList.remove('genealogy-faux-fullscreen-open');
+ updateGenealogyExpand();
+}
+genealogyExpand.addEventListener('click',async()=>{
+ if(genealogyPage.classList.contains('genealogy-faux-fullscreen')){closeGenealogyFallback();return}
+ if(document.fullscreenElement===genealogyPage){await document.exitFullscreen();return}
+ if(document.body.dataset.menuOpen==='true')closeMenu();
+ try{
+  if(typeof genealogyPage.requestFullscreen!=='function')throw new Error('Fullscreen unavailable');
+  await genealogyPage.requestFullscreen();
+ }catch(_){
+  genealogyPage.classList.add('genealogy-faux-fullscreen');
+  document.body.classList.add('genealogy-faux-fullscreen-open');
+ }
+ updateGenealogyExpand();
+});
+document.addEventListener('keydown',event=>{
+ if(event.key==='Escape'&&genealogyPage.classList.contains('genealogy-faux-fullscreen')){event.preventDefault();closeGenealogyFallback()}
+});
 document.addEventListener('fullscreenchange',updateGenealogyExpand);
 window.addEventListener('resize',fitGenealogyFullscreen);
 updateGenealogyExpand();

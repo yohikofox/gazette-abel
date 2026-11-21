@@ -166,3 +166,12 @@ body[data-reader-layout="mobile"] #page12 h1{font-size:clamp(31px,8vw,43px)!impo
 body[data-reader-layout="mobile"] #page12 h1:before,
 body[data-reader-layout="mobile"] #page12 h1:after{font-size:17px!important;margin:0 5px!important}
 }
+
+/* Safari iPhone cannot fullscreen arbitrary elements; keep the tapestry above the mobile reader. */
+@media screen{
+body[data-reader-layout="mobile"] .paper-viewport:has(#page5.genealogy-faux-fullscreen){z-index:500!important}
+body[data-reader-layout="mobile"] .paper-stage>#page5.genealogy-faux-fullscreen:not(:fullscreen){position:fixed!important;inset:0!important;width:100vw!important;height:100dvh!important;min-height:0!important;max-width:none!important;margin:0!important;padding:0!important;overflow:hidden!important;scroll-margin-top:0!important;background:#27241e!important}
+body[data-reader-layout="mobile"] #page5.genealogy-faux-fullscreen:not(:fullscreen):before{display:none!important}
+body[data-reader-layout="mobile"] #page5.genealogy-faux-fullscreen .genealogy-fullscreen-tapestry{max-width:none!important;width:2172px!important}
+body[data-reader-layout="mobile"] #page5.genealogy-faux-fullscreen .genealogy-expand{position:fixed!important;top:max(12px,env(safe-area-inset-top))!important;right:max(12px,env(safe-area-inset-right))!important;width:auto!important;margin:0!important;z-index:21}
+}
