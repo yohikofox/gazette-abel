@@ -175,3 +175,19 @@ body[data-reader-layout="mobile"] #page5.genealogy-faux-fullscreen:not(:fullscre
 body[data-reader-layout="mobile"] #page5.genealogy-faux-fullscreen .genealogy-fullscreen-tapestry{max-width:none!important;width:2172px!important}
 body[data-reader-layout="mobile"] #page5.genealogy-faux-fullscreen .genealogy-expand{position:fixed!important;top:max(12px,env(safe-area-inset-top))!important;right:max(12px,env(safe-area-inset-right))!important;width:auto!important;margin:0!important;z-index:21}
 }
+/* Mobile: a compact double portrait replaces the print wrestling poster. */
+@media screen{
+body[data-reader-layout="mobile"] #page2 .tata-showdown{display:grid!important;grid-template-columns:minmax(0,1fr) minmax(0,1fr)!important;align-items:start!important;gap:14px 10px!important;padding:16px 14px 18px!important;text-align:center}
+body[data-reader-layout="mobile"] #page2 .tata-showdown:before,
+body[data-reader-layout="mobile"] #page2 .tata-showdown:after{display:none!important}
+body[data-reader-layout="mobile"] #page2 .tata-showdown-center{grid-column:1/-1;grid-row:1;padding-bottom:12px;border-bottom:1px solid var(--rule)}
+body[data-reader-layout="mobile"] #page2 .tata-showdown .eyebrow{font-size:11px;letter-spacing:1px}
+body[data-reader-layout="mobile"] #page2 .tata-showdown strong{font-size:clamp(31px,9vw,39px);line-height:.95;margin:7px 0 5px}
+body[data-reader-layout="mobile"] #page2 .tata-showdown .versus,
+body[data-reader-layout="mobile"] #page2 .tata-showdown .box{display:none!important}
+body[data-reader-layout="mobile"] #page2 .tata-showdown small{font-size:14px;line-height:1.2;margin-top:5px}
+body[data-reader-layout="mobile"] #page2 .tata-showdown .tata-choice{display:flex!important;flex-direction:column!important;gap:8px!important;min-width:0!important;align-items:center!important}
+body[data-reader-layout="mobile"] #page2 .tata-showdown .tata-choice .tata-portrait{order:0;width:min(100%,134px)!important;height:134px!important;aspect-ratio:1!important;flex:none!important}
+body[data-reader-layout="mobile"] #page2 .tata-showdown .tata-choice figcaption{order:1;font-size:17px;letter-spacing:.6px}
+}
+@media screen{body[data-reader-layout="mobile"] #page2 .tata-showdown small{display:none!important}}
