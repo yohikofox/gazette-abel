@@ -160,3 +160,9 @@ body.sorting-mobile-register-open .paper-viewport:has(#page10){z-index:350!impor
 body.sorting-mobile-register-open .menu-toggle{opacity:0;pointer-events:none}
 html:has(body.sorting-mobile-register-open),body.sorting-mobile-register-open{overflow:hidden!important}
 }
+/* The map headline's large stars and print font widened the continuous reader. */
+@media screen{
+body[data-reader-layout="mobile"] #page12 h1{font-size:clamp(31px,8vw,43px)!important;line-height:1!important;overflow-wrap:anywhere}
+body[data-reader-layout="mobile"] #page12 h1:before,
+body[data-reader-layout="mobile"] #page12 h1:after{font-size:17px!important;margin:0 5px!important}
+}
