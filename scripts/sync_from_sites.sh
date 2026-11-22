@@ -15,6 +15,7 @@ python3 "$repo_dir/scripts/patch_mobile_reading.py" "$repo_dir/dist/index.html"
 python3 "$repo_dir/scripts/patch_sorting_sync.py" "$repo_dir/dist/index.html"
 python3 "$repo_dir/scripts/patch_genealogy_houses.py" "$repo_dir/dist/index.html"
 python3 "$repo_dir/scripts/patch_mastheads.py" "$repo_dir/dist/index.html"
+python3 "$repo_dir/scripts/patch_pwa_updates.py" "$repo_dir/dist/index.html"
 cp "$repo_dir/scripts/assets/masthead_en.webp" "$repo_dir/dist/assets/embedded/masthead_en.webp"
 cp "$repo_dir/scripts/assets/masthead_fr.webp" "$repo_dir/dist/assets/embedded/masthead_fr.webp"
 cp "$repo_dir/scripts/assets/ornate_eleven.webp" "$repo_dir/dist/assets/embedded/ornate_eleven.webp"
@@ -30,18 +31,6 @@ cp "$repo_dir/scripts/qrcode.LICENSE" "$repo_dir/dist/assets/embedded/qrcode.LIC
 cp "$repo_dir/scripts/share_dynamic.js" "$repo_dir/dist/assets/embedded/share_dynamic.js"
 cp "$repo_dir/scripts/share_dynamic.css" "$repo_dir/dist/assets/embedded/share_dynamic.css"
 rm -f "$repo_dir/dist/assets/embedded/share_qr.png"
-python3 - "$repo_dir/dist" <<'PY'
-from hashlib import sha256
-from pathlib import Path
-import re
-import sys
-
-dist = Path(sys.argv[1])
-files = (dist / 'index.html', dist / 'assets/embedded/mobile_reading_css.css',
-         dist / 'assets/embedded/mobile_reading_js.js', dist / 'assets/embedded/sorting_sync_js.js', dist / 'assets/embedded/genealogy_house_sync_js.js', dist / 'assets/embedded/masthead_en.webp',
-         dist / 'assets/embedded/masthead_fr.webp', dist / 'assets/embedded/ornate_eleven.webp')
-revision = sha256(b''.join(path.read_bytes() for path in files)).hexdigest()[:12]
-worker = dist / 'sw.js'
-worker.write_text(re.sub(r"const CACHE='gazette-abel-[^']+';", f"const CACHE='gazette-abel-{revision}';", worker.read_text(), count=1))
-PY
+cp "$repo_dir/scripts/sw-template.js" "$repo_dir/dist/sw.js"
+python3 "$repo_dir/scripts/stamp_release.py" "$repo_dir/dist"
 echo "GitHub Pages output ready in $repo_dir/dist"

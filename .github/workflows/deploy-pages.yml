@@ -32,6 +32,9 @@ jobs:
           test -s dist/index.html
           test -s dist/manifest.webmanifest
           test -s dist/sw.js
+          node --check dist/sw.js
+      - name: Stamp this publication
+        run: python3 scripts/stamp_release.py dist --version "${GITHUB_SHA:0:12}-${GITHUB_RUN_ID}-${GITHUB_RUN_ATTEMPT}"
       - name: Set up GitHub Pages
         uses: actions/configure-pages@v5
       - name: Upload site

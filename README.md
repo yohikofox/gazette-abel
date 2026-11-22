@@ -26,6 +26,12 @@ Le contenu de `dist/` est la version à publier. Le workflow
 GitHub Pages après chaque push sur `main` qui le modifie. Il n'y a pas de build
 sur le Mac au moment du déploiement.
 
+Chaque déploiement donne un nouvel identifiant au service worker et aux URLs des
+vidéos. L’application installée vérifie les mises à jour à l’ouverture et au
+retour au premier plan ; le nouveau service worker efface l’ancien cache et
+recharge la page une fois. Hors ligne, le dernier contenu chargé reste
+consultable jusqu’au retour du réseau.
+
 Pour synchroniser une nouvelle version issue du projet Sites local :
 
 ```sh
