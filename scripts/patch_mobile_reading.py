@@ -17,6 +17,14 @@ if script not in html:
     html = html.replace('</body></html>', script + '</body></html>', 1)
 if controls not in html:
     html = html.replace('<h2>Affichage</h2>', '<h2>Affichage</h2>' + controls, 1)
+genealogy_preview = (' <div class="genealogy-mobile-intro"><span class="blacktag">Archives familiales</span>'
+                     '<h2>La tapisserie d’Abel</h2>'
+                     '<p>Une histoire de générations, de frères, de sœurs et de cousins — d’après les liens confirmés par la famille.</p></div>\n'
+                     ' <div class="genealogy-mobile-preview" aria-hidden="true"><img loading="lazy" decoding="async" '
+                     'src="assets/embedded/genealogy_mobile_preview.webp" alt=""></div>\n')
+if 'class="genealogy-mobile-intro"' not in html:
+    html = html.replace(' <button class="genealogy-expand" id="genealogy-expand"',
+                        genealogy_preview + ' <button class="genealogy-expand" id="genealogy-expand"', 1)
 # Keep swipes for the classic page reader and use section anchors in the
 # continuous mobile layout, including when that layout is forced on desktop.
 html = html.replace("if(window.innerWidth>900||readerZoom!==null", "if(document.body.dataset.mobileReader!=='true'||readerZoom!==null")

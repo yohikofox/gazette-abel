@@ -2,6 +2,7 @@
 .reader-layout-choice button{min-height:44px;padding:6px 4px;border:1px solid #a78d62;background:#e4d2ab;color:#2b2118;font:15px/1.1 'Fell SC',Georgia,serif;cursor:pointer}
 .reader-layout-choice button[aria-pressed="true"]{background:#30241a;color:#f1dfb9;border-color:#d2b37c}
 .reader-layout-choice button:focus-visible{outline:3px solid #a77438;outline-offset:2px}
+.genealogy-mobile-intro,.genealogy-mobile-preview{display:none}
 @media screen{
 body[data-reader-layout="mobile"]{overflow:hidden!important}
 body[data-reader-layout="mobile"] .paper-viewport{position:fixed!important;inset:0 0 var(--reader-toolbar-height,68px) 0!important;z-index:1;display:block!important;width:100%!important;height:auto!important;margin:0!important;overflow-x:hidden!important;overflow-y:auto!important;overscroll-behavior:contain;-webkit-overflow-scrolling:touch}
@@ -97,8 +98,7 @@ body[data-reader-layout="mobile"] .paper:not(:fullscreen) .credits-page .credits
 body[data-reader-layout="mobile"] .paper:not(:fullscreen) .credits-page .credits-close p{font-size:26px!important}
 body[data-reader-layout="mobile"] .genealogy-paper:not(:fullscreen){min-height:380px!important}
 body[data-reader-layout="mobile"] .genealogy-paper:not(:fullscreen) .genealogy-rotated{display:none!important}
-body[data-reader-layout="mobile"] .genealogy-paper:not(:fullscreen) .genealogy-expand{position:relative!important;top:auto!important;right:auto!important;display:block!important;width:100%;margin:90px auto 20px!important;white-space:normal;text-align:center}
-body[data-reader-layout="mobile"] .genealogy-paper:not(:fullscreen):after{content:'Touchez pour explorer la toile généalogique en plein écran';display:block;position:relative;font:italic 20px/1.3 'Fell',Georgia,serif;text-align:center;padding:10px}
+body[data-reader-layout="mobile"] .genealogy-paper:not(:fullscreen) .genealogy-expand{position:relative!important;top:auto!important;right:auto!important;display:block!important;width:100%;min-height:50px;margin:16px auto 0!important;white-space:normal;text-align:center}
 body[data-reader-layout="mobile"] .paper:not(:fullscreen) .layout-grid{display:none!important}
 /* One continuous article stream; the classic page reader remains available. */
 html:has(body[data-reader-layout="mobile"]){scroll-behavior:auto!important}
@@ -112,8 +112,13 @@ body[data-reader-layout="mobile"] .paper-stage>#page1{padding-top:76px!important
 body[data-reader-layout="mobile"] .mobile-reader{display:none!important}
 body[data-reader-layout="mobile"] .paper:not(:fullscreen) :is(.footer,.poster-footer,.gang-footer){display:none!important}
 body[data-reader-layout="mobile"] .site-footer{display:block!important;margin:8px auto 25px}
-body[data-reader-layout="mobile"] .genealogy-paper:not(:fullscreen){min-height:270px!important}
-body[data-reader-layout="mobile"] .genealogy-paper:not(:fullscreen) .genealogy-expand{margin:40px auto 20px!important}
+body[data-reader-layout="mobile"] .genealogy-paper:not(:fullscreen){min-height:0!important}
+body[data-reader-layout="mobile"] #page5:not(:fullscreen):not(.genealogy-faux-fullscreen){padding:28px 20px 32px!important}
+body[data-reader-layout="mobile"] #page5:not(:fullscreen):not(.genealogy-faux-fullscreen) .genealogy-mobile-intro{display:block;margin:0 0 16px;text-align:center}
+body[data-reader-layout="mobile"] #page5:not(:fullscreen):not(.genealogy-faux-fullscreen) .genealogy-mobile-intro h2{margin:10px 0 9px;font:normal clamp(34px,10vw,45px)/.95 Impact,'Gazette Headline','Arial Narrow',sans-serif;text-transform:uppercase}
+body[data-reader-layout="mobile"] #page5:not(:fullscreen):not(.genealogy-faux-fullscreen) .genealogy-mobile-intro p{margin:0;font:italic 17px/1.27 'Fell',Georgia,serif!important;text-align:center!important}
+body[data-reader-layout="mobile"] #page5:not(:fullscreen):not(.genealogy-faux-fullscreen) .genealogy-mobile-preview{display:block;aspect-ratio:2172/724;overflow:hidden;border:5px ridge #80623c;background:#0d2118;box-shadow:0 3px 10px #24191188}
+body[data-reader-layout="mobile"] #page5:not(:fullscreen):not(.genealogy-faux-fullscreen) .genealogy-mobile-preview img{display:block;width:100%;height:100%;object-fit:contain}
 }
 
 /* The V1 sorting ceremony follows the light Gazette mockup on mobile. */
