@@ -1,0 +1,10 @@
+# Les portraits de genealogy.yaml sont les versions « Moldu » et ne sont jamais écrasés.
+# Les maisons sont indépendantes de eye_color. La cérémonie pourra remplir assignments.
+default_variant: muggle
+assignments: {}
+variants:
+  abel:
+    gryffindor: assets/genealogy_house_variants/abel/gryffindor_uniform_v2.webp
+    hufflepuff: assets/genealogy_house_variants/abel/hufflepuff_uniform_v2.webp
+    ravenclaw: assets/genealogy_house_variants/abel/ravenclaw_uniform_v2.webp
+    slytherin: assets/genealogy_house_variants/abel/slytherin_uniform_v2.webp

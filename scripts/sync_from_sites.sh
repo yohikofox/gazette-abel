@@ -13,6 +13,7 @@ python3 "$repo_dir/scripts/patch_share.py" "$repo_dir/dist/index.html"
 python3 "$repo_dir/scripts/patch_valerie_visibility.py" "$repo_dir/dist/index.html"
 python3 "$repo_dir/scripts/patch_mobile_reading.py" "$repo_dir/dist/index.html"
 python3 "$repo_dir/scripts/patch_sorting_sync.py" "$repo_dir/dist/index.html"
+python3 "$repo_dir/scripts/patch_genealogy_houses.py" "$repo_dir/dist/index.html"
 python3 "$repo_dir/scripts/patch_mastheads.py" "$repo_dir/dist/index.html"
 cp "$repo_dir/scripts/assets/masthead_en.webp" "$repo_dir/dist/assets/embedded/masthead_en.webp"
 cp "$repo_dir/scripts/assets/masthead_fr.webp" "$repo_dir/dist/assets/embedded/masthead_fr.webp"
@@ -22,6 +23,8 @@ rm -f "$repo_dir/dist/assets/embedded/ornate_eleven.png"
 cp "$repo_dir/scripts/mobile_reading.css" "$repo_dir/dist/assets/embedded/mobile_reading_css.css"
 cp "$repo_dir/scripts/mobile_reading.js" "$repo_dir/dist/assets/embedded/mobile_reading_js.js"
 cp "$repo_dir/scripts/sorting_sync.js" "$repo_dir/dist/assets/embedded/sorting_sync_js.js"
+cp "$repo_dir/scripts/genealogy_house_sync.js" "$repo_dir/dist/assets/embedded/genealogy_house_sync_js.js"
+cp "$repo_dir"/scripts/assets/gene_house_*.webp "$repo_dir/dist/assets/embedded/"
 cp "$repo_dir/scripts/qrcode.min.js" "$repo_dir/dist/assets/embedded/qrcode.min.js"
 cp "$repo_dir/scripts/qrcode.LICENSE" "$repo_dir/dist/assets/embedded/qrcode.LICENSE"
 cp "$repo_dir/scripts/share_dynamic.js" "$repo_dir/dist/assets/embedded/share_dynamic.js"
@@ -35,7 +38,7 @@ import sys
 
 dist = Path(sys.argv[1])
 files = (dist / 'index.html', dist / 'assets/embedded/mobile_reading_css.css',
-         dist / 'assets/embedded/mobile_reading_js.js', dist / 'assets/embedded/sorting_sync_js.js', dist / 'assets/embedded/masthead_en.webp',
+         dist / 'assets/embedded/mobile_reading_js.js', dist / 'assets/embedded/sorting_sync_js.js', dist / 'assets/embedded/genealogy_house_sync_js.js', dist / 'assets/embedded/masthead_en.webp',
          dist / 'assets/embedded/masthead_fr.webp', dist / 'assets/embedded/ornate_eleven.webp')
 revision = sha256(b''.join(path.read_bytes() for path in files)).hexdigest()[:12]
 worker = dist / 'sw.js'

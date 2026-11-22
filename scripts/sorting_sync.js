@@ -67,6 +67,7 @@
       originalSave();
       previous = Object.fromEntries(Object.entries(sortingAssignments).map(([id, result]) => [id, signature(result)]));
       renderSorting();
+      document.dispatchEvent(new Event('gazette:sorting-updated'));
     }
     state.lastSyncedRevision = snapshot.revision;
     state.lastSyncedAt = new Date().toISOString();
