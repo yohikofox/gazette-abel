@@ -59,6 +59,18 @@ body[data-reader-layout="mobile"] .paper:not(:fullscreen) .gang-frame{height:aut
 body[data-reader-layout="mobile"] .paper:not(:fullscreen) .gang-photo-border{width:100%!important;height:clamp(330px,90vw,550px)!important}
 body[data-reader-layout="mobile"] .paper:not(:fullscreen) .gang-names{grid-template-columns:1fr 1fr!important;font-size:25px!important}
 body[data-reader-layout="mobile"] .paper:not(:fullscreen) .gang-seal{margin-top:18px!important}
+/* The four cousins' portrait is taller than the generic mobile photo frame. */
+body[data-reader-layout="mobile"] #page7 .gang-frame{padding:12px!important}
+body[data-reader-layout="mobile"] #page7 .gang-frame:before,
+body[data-reader-layout="mobile"] #page7 .gang-frame:after{display:none}
+body[data-reader-layout="mobile"] #page7 .gang-photo-border{width:100%!important;height:auto!important;aspect-ratio:755/1003;padding:5px!important}
+body[data-reader-layout="mobile"] #page7 .gang-photo{width:100%!important;height:100%!important;aspect-ratio:auto!important}
+body[data-reader-layout="mobile"] #page7 .gang-photo img{width:100%!important;height:100%!important;object-fit:cover;object-position:center top}
+body[data-reader-layout="mobile"] #page7 .gang-names{grid-template-columns:repeat(4,minmax(0,1fr))!important;gap:0!important;margin:10px 0 8px!important;padding:8px 0 6px!important;font-size:clamp(14px,3.8vw,20px)!important;letter-spacing:0!important}
+body[data-reader-layout="mobile"] #page7 .gang-names span{min-width:0;overflow-wrap:anywhere}
+body[data-reader-layout="mobile"] #page7 .gang-charge{font-size:16px!important;line-height:1.24!important;letter-spacing:0!important;margin:11px 0!important}
+body[data-reader-layout="mobile"] #page7 .gang-reward{font-size:clamp(19px,5.1vw,25px)!important;line-height:1.04!important;padding:8px 5px!important}
+body[data-reader-layout="mobile"] #page7 .gang-seal{font-size:clamp(18px,5vw,25px)!important;line-height:1.05!important;max-width:100%;margin-top:18px!important}
 body[data-reader-layout="mobile"] .paper:not(:fullscreen) .sorting-layout{display:flex!important;flex-direction:column!important}
 body[data-reader-layout="mobile"] .paper:not(:fullscreen) .sorting-register,body[data-reader-layout="mobile"] .paper:not(:fullscreen) .sorting-stage{width:100%!important;height:auto!important;min-height:220px!important;padding:13px!important}
 body[data-reader-layout="mobile"] .paper:not(:fullscreen) .sorting-roster{height:220px!important}
