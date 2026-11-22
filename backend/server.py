@@ -30,6 +30,9 @@ TRAITS = {
 }
 DB_PATH = Path(os.environ.get("GAZETTE_DB_PATH", "/data/assignments.sqlite3"))
 PORT = int(os.environ.get("GAZETTE_PORT", "8000"))
+ASSET_BASE = os.environ.get(
+    "GAZETTE_ASSET_BASE", "https://yohikofox.github.io/gazette-abel/assets/embedded"
+).strip().rstrip("/") + "/"
 ALLOWED_ORIGINS = {
     origin.strip().rstrip("/")
     for origin in os.environ.get("GAZETTE_ALLOWED_ORIGINS", "https://yohikofox.github.io").split(",")
@@ -178,10 +181,23 @@ def admin_page() -> str:
         )
     return """<!doctype html><html lang="fr"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Gazette d'Abel · registre</title><style>body{font:18px/1.4 Georgia,serif;max-width:1100px;margin:30px auto;padding:0 16px;background:#ead9b5;color:#211b15}h2{margin-top:2em}.table-wrap{overflow-x:auto}table{border-collapse:collapse;width:100%;min-width:580px}td,th{padding:8px;border:1px solid #766044;text-align:left}th{background:#d5bd91}tr:nth-child(even){background:#f4e6c9}.empty{font-style:italic}</style>
+<nav><a href="/admin">Registre et conflits</a> · <a href="/admin/portraits">Portraits des maisons</a></nav>
 <h1>Registre du Choixpeau</h1><p>Résultats partagés entre les téléphones de la famille.</p>
 <h2>Maisons attribuées (""" + str(len(assignments)) + """)</h2><div class="table-wrap"><table><thead><tr><th>Personne</th><th>Maison</th><th>Révision</th><th>Dernière mise à jour</th></tr></thead><tbody>""" + ("".join(result_items) or '<tr><td colspan="4" class="empty">Aucun résultat enregistré sur le serveur.</td></tr>') + """</tbody></table></div>
 <h2>Résultats à rapprocher (""" + str(len(conflicts)) + """)</h2><p>Les désaccords sont conservés ici sans interrompre la cérémonie.</p>
 <div class="table-wrap"><table><thead><tr><th>N°</th><th>Personne</th><th>Résultat commun</th><th>Résultat conservé sur le téléphone</th><th>Reçu le</th><th>État</th></tr></thead><tbody>""" + ("".join(conflict_items) or '<tr><td colspan="6" class="empty">Aucun conflit enregistré.</td></tr>') + "</tbody></table></div></html>"
+
+
+def portrait_page() -> str:
+    current = {person_id: value["result"]["house"] for person_id, value in snapshot()["assignments"].items()}
+    def script_json(value: object) -> str:
+        return (json.dumps(value, ensure_ascii=False, separators=(",", ":"))
+                .replace("&", "\\u0026").replace("<", "\\u003c").replace(">", "\\u003e")
+                .replace("\u2028", "\\u2028").replace("\u2029", "\\u2029"))
+    return (HERE / "admin_portraits.html").read_text(encoding="utf-8") \
+        .replace("__PEOPLE_JSON__", script_json(PEOPLE)) \
+        .replace("__ASSIGNMENTS_JSON__", script_json(current)) \
+        .replace("__ASSET_BASE_JSON__", script_json(ASSET_BASE))
 
 
 class Handler(BaseHTTPRequestHandler):
@@ -223,6 +239,8 @@ class Handler(BaseHTTPRequestHandler):
             self.respond(200, snapshot())
         elif path in ("/admin", "/admin/conflicts"):
             self.respond(200, admin_page(), "text/html; charset=utf-8")
+        elif path == "/admin/portraits":
+            self.respond(200, portrait_page(), "text/html; charset=utf-8")
         else:
             self.respond(404, {"error": "not_found"})
 

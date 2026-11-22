@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="fr">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Gazette d'Abel · portraits des maisons</title>
+<style>
+  :root { color-scheme: light; }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: #ead9b5; color: #211b15; font: 17px/1.45 Georgia, serif; }
+  header { padding: 20px max(16px, calc((100vw - 1320px) / 2)); border-bottom: 3px double #766044; background: #e3cea5; }
+  nav { display: flex; gap: 16px; margin-bottom: 15px; }
+  nav a { color: #4a321d; text-decoration: underline; text-underline-offset: 3px; }
+  nav a[aria-current] { font-weight: 700; }
+  h1, h2, h3, p { margin: 0; }
+  h1 { font-size: clamp(29px, 4vw, 42px); }
+  header p { margin-top: 5px; }
+  main { display: grid; grid-template-columns: minmax(225px, 285px) minmax(0, 1fr); gap: 22px; max-width: 1352px; padding: 22px 16px 55px; margin: auto; }
+  aside, article { border: 1px solid #a58b61; background: #f2e5c9; box-shadow: 0 2px 7px #412c1c1c; }
+  aside { align-self: start; padding: 16px; position: sticky; top: 16px; }
+  label { display: block; font-weight: 700; margin-bottom: 7px; }
+  input { width: 100%; min-height: 44px; border: 1px solid #806749; border-radius: 4px; padding: 9px 11px; font: inherit; color: inherit; background: #fffaf0; }
+  #count { font-size: 14px; margin: 10px 0; color: #5e4933; }
+  #results { display: grid; gap: 5px; max-height: min(70vh, 710px); overflow: auto; }
+  #results button { min-height: 44px; text-align: left; font: inherit; color: inherit; background: #ead8b5; border: 1px solid transparent; border-radius: 3px; padding: 7px 10px; cursor: pointer; }
+  #results button:hover, #results button:focus-visible { border-color: #765a37; background: #f9edcf; }
+  #results button[aria-current="true"] { border-color: #765a37; background: #d5bd91; font-weight: 700; }
+  #empty-search { display: none; }
+  article { min-width: 0; padding: clamp(14px, 2vw, 24px); }
+  #assignment { margin-top: 5px; color: #5e4933; }
+  h3 { margin: 24px 0 10px; padding-bottom: 5px; border-bottom: 1px solid #a58b61; font-size: 21px; }
+  .gallery { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 10px; }
+  figure { min-width: 0; margin: 0; border: 1px solid #bca579; background: #e5d3ab; text-align: center; }
+  figure.selected { border: 3px solid #6c4b27; }
+  figure img { display: block; width: 100%; height: clamp(135px, 18vw, 205px); object-fit: contain; object-position: center bottom; background: #d8c39a; }
+  figcaption { padding: 7px 4px; font-size: 15px; }
+  @media (max-width: 760px) {
+    main { display: block; }
+    aside { position: static; margin-bottom: 14px; }
+    #results { display: flex; max-height: 150px; overflow: auto; }
+    #results button { flex: 0 0 auto; white-space: nowrap; }
+    .gallery { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    figure img { height: 170px; }
+  }
+</style>
+<header>
+  <nav aria-label="Administration"><a href="/admin">Registre et conflits</a><a href="/admin/portraits" aria-current="page">Portraits des maisons</a></nav>
+  <h1>Portraits des maisons</h1>
+  <p>Retrouve une personne et compare ses quatre uniformes couleur et ses quatre broderies héraldiques aux portraits de référence.</p>
+</header>
+<main>
+  <aside>
+    <label for="search">Rechercher une personne</label>
+    <input id="search" type="search" placeholder="Prénom ou branche" autocomplete="off" aria-controls="results">
+    <p id="count" aria-live="polite"></p>
+    <div id="results" aria-label="Personnes"></div>
+    <p id="empty-search">Aucune personne trouvée.</p>
+  </aside>
+  <article id="detail" aria-live="polite">
+    <h2 id="person-name"></h2>
+    <p id="assignment"></p>
+    <div id="gallery"></div>
+  </article>
+</main>
+<script>
+(() => {
+  const people = __PEOPLE_JSON__;
+  const assignments = __ASSIGNMENTS_JSON__;
+  const assetBase = __ASSET_BASE_JSON__;
+  const houseNames = {gryffindor:'Gryffondor', hufflepuff:'Poufsouffle', ravenclaw:'Serdaigle', slytherin:'Serpentard'};
+  const details = {marcel_yvonne:'Marcel · côté Yvonne', marcel:'Marcel · côté Paulette', thierry:'Thierry · côté Damien', thierry_charlotte:'Thierry · côté Charlotte'};
+  const entries = Object.entries(people).map(([id, name]) => ({id, name:details[id] || name})).sort((a,b) => a.name.localeCompare(b.name, 'fr', {sensitivity:'base'}));
+  const search = document.getElementById('search');
+  const results = document.getElementById('results');
+  const count = document.getElementById('count');
+  const gallery = document.getElementById('gallery');
+  const plain = value => value.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
+  let selected = null;
+
+  function showPerson(id) {
+    if (!people[id]) return;
+    selected = id;
+    document.getElementById('person-name').textContent = details[id] || people[id];
+    const house = assignments[id];
+    document.getElementById('assignment').textContent = house
+      ? `Maison attribuée : ${houseNames[house] || house}` : 'Aucune maison attribuée pour le moment.';
+    gallery.replaceChildren();
+    for (const mode of [
+      {title:'Portraits couleur', reference:`gene_avatar_${id}.webp`, prefix:'gene_house_'},
+      {title:'Broderies héraldiques', reference:`gene_press_avatar_${id}.webp`, prefix:'gene_house_press_'}
+    ]) {
+      const title = document.createElement('h3'); title.textContent = mode.title; gallery.append(title);
+      const row = document.createElement('div'); row.className = 'gallery';
+      for (const [key, label, filename] of [
+        ['muggle','Moldu de référence',mode.reference],
+        ...Object.entries(houseNames).map(([key,label]) => [key,label,`${mode.prefix}${id}_${key}.webp`])
+      ]) {
+        const figure = document.createElement('figure');
+        if (key === house) figure.className = 'selected';
+        const image = document.createElement('img');
+        image.src = assetBase + filename;
+        image.alt = `${people[id]} · ${mode.title} · ${label}`;
+        image.loading = 'lazy'; image.decoding = 'async';
+        const caption = document.createElement('figcaption'); caption.textContent = label;
+        figure.append(image, caption); row.append(figure);
+      }
+      gallery.append(row);
+    }
+    for (const button of results.querySelectorAll('button')) button.setAttribute('aria-current', String(button.dataset.person === id));
+    const url = new URL(location.href); url.searchParams.set('person', id);
+    history.replaceState(null, '', url);
+  }
+
+  function filterPeople() {
+    const query = plain(search.value.trim());
+    results.replaceChildren();
+    const matches = entries.filter(person => plain(`${person.name} ${person.id}`).includes(query));
+    for (const person of matches) {
+      const button = document.createElement('button');
+      button.type = 'button'; button.dataset.person = person.id; button.textContent = person.name;
+      button.setAttribute('aria-current', String(person.id === selected));
+      button.addEventListener('click', () => showPerson(person.id));
+      results.append(button);
+    }
+    count.textContent = `${matches.length} personne${matches.length > 1 ? 's' : ''}`;
+    document.getElementById('empty-search').style.display = matches.length ? 'none' : 'block';
+  }
+
+  search.addEventListener('input', filterPeople);
+  search.addEventListener('keydown', event => {
+    if (event.key === 'Enter' && results.firstElementChild) {
+      event.preventDefault(); showPerson(results.firstElementChild.dataset.person);
+    }
+  });
+  filterPeople();
+  const requested = new URL(location.href).searchParams.get('person');
+  showPerson(people[requested] ? requested : entries[0]?.id);
+})();
+</script>
+</html>
