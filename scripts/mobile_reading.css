@@ -71,6 +71,15 @@ body[data-reader-layout="mobile"] #page7 .gang-names span{min-width:0;overflow-w
 body[data-reader-layout="mobile"] #page7 .gang-charge{font-size:16px!important;line-height:1.24!important;letter-spacing:0!important;margin:11px 0!important}
 body[data-reader-layout="mobile"] #page7 .gang-reward{font-size:clamp(19px,5.1vw,25px)!important;line-height:1.04!important;padding:8px 5px!important}
 body[data-reader-layout="mobile"] #page7 .gang-seal{font-size:clamp(18px,5vw,25px)!important;line-height:1.05!important;max-width:100%;margin-top:18px!important}
+/* Treat the hourglass as a newspaper vignette beside its story. */
+body[data-reader-layout="mobile"] #page6 .page4-bottom{display:grid!important;grid-template-columns:100px minmax(0,1fr)!important;column-gap:12px!important;row-gap:6px!important;width:100%!important;height:auto!important}
+body[data-reader-layout="mobile"] #page6 .page4-bottom>.engraving{grid-column:1;grid-row:1 / span 2;align-self:center;width:100px!important;height:100px!important;margin:0!important;object-fit:contain}
+body[data-reader-layout="mobile"] #page6 .page4-bottom>div:nth-child(2){display:contents!important}
+body[data-reader-layout="mobile"] #page6 .page4-bottom>div:nth-child(2)>.blacktag{grid-column:2;grid-row:1;align-self:end;max-width:100%;font-size:11px!important;line-height:1.1!important}
+body[data-reader-layout="mobile"] #page6 .page4-bottom>div:nth-child(2)>h2{grid-column:2;grid-row:2;align-self:start;margin:0!important;font-size:clamp(25px,7vw,32px)!important}
+body[data-reader-layout="mobile"] #page6 .page4-bottom>div:nth-child(2)>p{grid-column:1 / -1;margin:4px 0 0!important}
+body[data-reader-layout="mobile"] #page6 .page4-bottom>div:nth-child(3){grid-column:1 / -1;margin-top:18px!important}
+body[data-reader-layout="mobile"] #page6 .page4-bottom>div:nth-child(3)>h2{font-size:clamp(25px,7.2vw,30px)!important}
 body[data-reader-layout="mobile"] .paper:not(:fullscreen) .sorting-layout{display:flex!important;flex-direction:column!important}
 body[data-reader-layout="mobile"] .paper:not(:fullscreen) .sorting-register,body[data-reader-layout="mobile"] .paper:not(:fullscreen) .sorting-stage{width:100%!important;height:auto!important;min-height:220px!important;padding:13px!important}
 body[data-reader-layout="mobile"] .paper:not(:fullscreen) .sorting-roster{height:220px!important}

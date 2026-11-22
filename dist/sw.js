@@ -1,4 +1,4 @@
-const CACHE='gazette-abel-f6406db4f45d';
+const CACHE='gazette-abel-b33371087572';
 const SHELL=[
   './','./index.html','./articles_temporaires.html','./manifest.webmanifest',
   './icons/gazette-192.png','./icons/gazette-512.png','./icons/gazette-180.png',
