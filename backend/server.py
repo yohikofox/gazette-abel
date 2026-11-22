@@ -17,6 +17,12 @@ from urllib.parse import urlsplit
 HERE = Path(__file__).resolve().parent
 PEOPLE = json.loads((HERE / "people.json").read_text(encoding="utf-8"))
 HOUSES = {"gryffindor", "hufflepuff", "ravenclaw", "slytherin"}
+HOUSE_NAMES = {
+    "gryffindor": "Gryffondor",
+    "hufflepuff": "Poufsouffle",
+    "ravenclaw": "Serdaigle",
+    "slytherin": "Serpentard",
+}
 TRAITS = {
     "courage", "initiative", "integrity", "resilience", "loyalty", "empathy",
     "patience", "fairness", "curiosity", "analysis", "creativity",
@@ -143,22 +149,39 @@ def save_result(person_id: str, payload: dict) -> tuple[int, dict]:
         return 200, {"assignment": {"result": result, "revision": row_revision, "updatedAt": timestamp}, "conflictRecorded": False}
 
 
-def conflict_page() -> str:
+def admin_page() -> str:
     with connect() as db:
-        rows = db.execute("SELECT id,person_id,candidate_json,shared_json,device_id,created_at,status FROM conflicts ORDER BY id DESC LIMIT 200").fetchall()
-    items = []
-    for row in rows:
+        assignments = db.execute(
+            "SELECT person_id,result_json,revision,updated_at FROM assignments ORDER BY person_id"
+        ).fetchall()
+        conflicts = db.execute(
+            "SELECT id,person_id,candidate_json,shared_json,created_at,status FROM conflicts ORDER BY id DESC LIMIT 200"
+        ).fetchall()
+    assignments = sorted(assignments, key=lambda row: PEOPLE.get(row["person_id"], row["person_id"]).casefold())
+    result_items = []
+    for row in assignments:
+        house = json.loads(row["result_json"])["house"]
+        result_items.append(
+            f"<tr><td>{html.escape(PEOPLE.get(row['person_id'], row['person_id']))}</td>"
+            f"<td>{html.escape(HOUSE_NAMES.get(house, house))}</td>"
+            f"<td>{row['revision']}</td><td>{html.escape(row['updated_at'])}</td></tr>"
+        )
+    conflict_items = []
+    for row in conflicts:
         candidate = json.loads(row["candidate_json"])["house"]
         shared = json.loads(row["shared_json"])["house"]
-        items.append(
-            f"<tr><td>{row['id']}</td><td>{html.escape(PEOPLE[row['person_id']])}</td>"
-            f"<td>{html.escape(shared)}</td><td>{html.escape(candidate)}</td>"
+        conflict_items.append(
+            f"<tr><td>{row['id']}</td><td>{html.escape(PEOPLE.get(row['person_id'], row['person_id']))}</td>"
+            f"<td>{html.escape(HOUSE_NAMES.get(shared, shared))}</td>"
+            f"<td>{html.escape(HOUSE_NAMES.get(candidate, candidate))}</td>"
             f"<td>{html.escape(row['created_at'])}</td><td>{html.escape(row['status'])}</td></tr>"
         )
     return """<!doctype html><html lang="fr"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Gazette d'Abel · suivi des conflits</title><style>body{font:18px/1.4 Georgia,serif;max-width:1100px;margin:30px auto;padding:0 16px;background:#ead9b5;color:#211b15}table{border-collapse:collapse;width:100%}td,th{padding:8px;border:1px solid #766044;text-align:left}th{background:#d5bd91}tr:nth-child(even){background:#f4e6c9}</style>
-<h1>Résultats à rapprocher</h1><p>Cette page de suivi fait partie de la même stack que l'API. Elle n'apparaît pas dans l'interface familiale.</p>
-<table><thead><tr><th>N°</th><th>Personne</th><th>Résultat commun</th><th>Résultat conservé sur le téléphone</th><th>Reçu le</th><th>État</th></tr></thead><tbody>""" + "".join(items) + "</tbody></table></html>"
+<title>Gazette d'Abel · registre</title><style>body{font:18px/1.4 Georgia,serif;max-width:1100px;margin:30px auto;padding:0 16px;background:#ead9b5;color:#211b15}h2{margin-top:2em}.table-wrap{overflow-x:auto}table{border-collapse:collapse;width:100%;min-width:580px}td,th{padding:8px;border:1px solid #766044;text-align:left}th{background:#d5bd91}tr:nth-child(even){background:#f4e6c9}.empty{font-style:italic}</style>
+<h1>Registre du Choixpeau</h1><p>Résultats partagés entre les téléphones de la famille.</p>
+<h2>Maisons attribuées (""" + str(len(assignments)) + """)</h2><div class="table-wrap"><table><thead><tr><th>Personne</th><th>Maison</th><th>Révision</th><th>Dernière mise à jour</th></tr></thead><tbody>""" + ("".join(result_items) or '<tr><td colspan="4" class="empty">Aucun résultat enregistré sur le serveur.</td></tr>') + """</tbody></table></div>
+<h2>Résultats à rapprocher (""" + str(len(conflicts)) + """)</h2><p>Les désaccords sont conservés ici sans interrompre la cérémonie.</p>
+<div class="table-wrap"><table><thead><tr><th>N°</th><th>Personne</th><th>Résultat commun</th><th>Résultat conservé sur le téléphone</th><th>Reçu le</th><th>État</th></tr></thead><tbody>""" + ("".join(conflict_items) or '<tr><td colspan="6" class="empty">Aucun conflit enregistré.</td></tr>') + "</tbody></table></div></html>"
 
 
 class Handler(BaseHTTPRequestHandler):
@@ -198,8 +221,8 @@ class Handler(BaseHTTPRequestHandler):
             self.respond(200, {"ok": True})
         elif path == "/v1/assignments":
             self.respond(200, snapshot())
-        elif path == "/admin/conflicts":
-            self.respond(200, conflict_page(), "text/html; charset=utf-8")
+        elif path in ("/admin", "/admin/conflicts"):
+            self.respond(200, admin_page(), "text/html; charset=utf-8")
         else:
             self.respond(404, {"error": "not_found"})
 

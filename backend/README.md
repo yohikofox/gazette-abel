@@ -10,7 +10,7 @@ Le fichier `compose.yaml` est destiné à l'environnement `local` de Portainer. 
 
 - `GET /health` : disponibilité.
 - `GET /v1/assignments` : révision globale et résultats partagés.
-- `GET /admin/conflicts` : page de suivi des résultats contradictoires, dans la même stack. Elle n’est pas liée depuis la Gazette, mais reste accessible à qui connaît son URL.
+- `GET /admin` : page listant les maisons actuellement enregistrées sur le serveur et les résultats contradictoires. L'ancien chemin `/admin/conflicts` affiche la même page. Elle n’est pas liée depuis la Gazette, mais reste accessible à qui connaît son URL.
 - `PUT /v1/assignments/{person_id}` : créer ou remplacer le résultat d'une personne. Corps : `result` au format de la cérémonie, `mutationId` stable pour les tentatives répétées et `baseRevision` (`null` pour un ancien résultat local sans marqueur de synchronisation).
 
 Le premier résultat enregistré pour un prénom est accepté. Un remplacement nécessite la révision courante de ce prénom. Un conflit est enregistré dans le journal de suivi et la réponse HTTP 200 renvoie le résultat commun. Le téléphone garde une copie de son ancien résultat dans son stockage local ; aucun avertissement ne s’affiche dans la cérémonie. Une répétition avec le même `mutationId` est sans effet.
