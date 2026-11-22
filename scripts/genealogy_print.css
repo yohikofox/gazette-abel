@@ -1,0 +1,60 @@
+@page gazette-tapestry { size: A3 landscape; margin: 6mm; }
+
+@media screen and (max-width: 640px) {
+  .genealogy-fullscreen-tools #genealogy-print { font-size: 15px; }
+}
+
+@media print {
+  body.genealogy-print-fullscreen,
+  html:has(body.genealogy-print-fullscreen) { width: auto !important; height: auto !important; overflow:visible !important; background:#fff !important; }
+  body.genealogy-print-fullscreen .paper-viewport:not(:has(#page5)),
+  body.genealogy-print-fullscreen .site-footer,
+  body.genealogy-print-fullscreen .menu-toggle { display:none !important; }
+  body.genealogy-print-fullscreen .paper-viewport:has(#page5),
+  body.genealogy-print-fullscreen .paper-viewport:has(#page5) .paper-stage { display:block !important; position:static !important; width:auto !important; height:auto !important; margin:0 !important; overflow:visible !important; transform:none !important; }
+  body.genealogy-print-fullscreen #page5 {
+    page:gazette-tapestry;
+    display:block !important;
+    position:relative !important;
+    inset:auto !important;
+    width:408mm !important;
+    height:285mm !important;
+    min-height:0 !important;
+    max-width:none !important;
+    margin:0 !important;
+    padding:0 !important;
+    overflow:hidden !important;
+    border:0 !important;
+    border-radius:0 !important;
+    box-shadow:none !important;
+    background:#fff !important;
+    transform:none !important;
+    break-after:auto !important;
+    page-break-after:auto !important;
+    print-color-adjust:exact;
+    -webkit-print-color-adjust:exact;
+  }
+  body.genealogy-print-fullscreen #page5::before,
+  body.genealogy-print-fullscreen #page5::after,
+  body.genealogy-print-fullscreen #page5 .genealogy-rotated,
+  body.genealogy-print-fullscreen #page5 .genealogy-mobile-intro,
+  body.genealogy-print-fullscreen #page5 .genealogy-mobile-preview,
+  body.genealogy-print-fullscreen #page5 .genealogy-expand,
+  body.genealogy-print-fullscreen #page5 .genealogy-fullscreen-tools { display:none !important; }
+  body.genealogy-print-fullscreen #page5 .genealogy-fullscreen-tapestry {
+    display:block !important;
+    position:absolute !important;
+    left:50% !important;
+    top:50% !important;
+    width:2172px !important;
+    height:724px !important;
+    max-width:none !important;
+    overflow:hidden !important;
+    transform-origin:top left !important;
+    transform:scale(.71) translate(-50%,-50%) !important;
+    filter:none;
+  }
+  body.genealogy-print-fullscreen[data-photo-mode="journal"] #page5 .genealogy-fullscreen-tapestry {
+    filter:grayscale(1) sepia(.38) contrast(1.12) brightness(1.06);
+  }
+}
