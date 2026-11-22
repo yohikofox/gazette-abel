@@ -1,0 +1,35 @@
+services:
+  gazette-abel-api:
+    image: python:3.12-slim
+    container_name: gazette-abel-api
+    command: ["python", "-u", "/app/server.py"]
+    restart: unless-stopped
+    read_only: true
+    security_opt:
+      - no-new-privileges:true
+    tmpfs:
+      - /tmp:rw,nosuid,nodev,size=16m
+    environment:
+      GAZETTE_DB_PATH: /data/assignments.sqlite3
+      GAZETTE_ALLOWED_ORIGINS: ${GAZETTE_ALLOWED_ORIGINS}
+      GAZETTE_PORT: "8000"
+    volumes:
+      - ${GAZETTE_BACKEND_DIR}:/app:ro
+      - gazette_abel_data:/data
+    ports:
+      - "${GAZETTE_BIND_ADDRESS:-127.0.0.1}:${GAZETTE_HOST_PORT:-18765}:8000"
+    networks:
+      - nginx_proxy
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/health', timeout=3)"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 15s
+
+volumes:
+  gazette_abel_data:
+
+networks:
+  nginx_proxy:
+    external: true
