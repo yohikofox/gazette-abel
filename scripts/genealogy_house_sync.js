@@ -2,31 +2,32 @@
 (() => {
   if (typeof sortingAssignments === 'undefined') return;
 
-  const portraitUrl = (person, house) => `assets/embedded/gene_house_${person}_${house}.webp`;
-  const targets = [
-    ...document.querySelectorAll('.genealogy-stage-color .genealogy-card[data-house-variants]'),
-    ...document.querySelectorAll('.genealogy-fullscreen-tapestry .genealogy-tapestry-person[data-house-variants]'),
-  ];
+  const targets = [];
+  function collect(selector, imageSelector, press) {
+    for (const person of document.querySelectorAll(selector)) {
+      const image = person.querySelector(imageSelector);
+      if (!image) continue;
+      const available = (press ? person.dataset.housePressVariants : person.dataset.houseVariants).split(' ');
+      image.dataset.muggleSrc ||= image.getAttribute('src');
+      image.addEventListener('error', () => {
+        if (image.getAttribute('src') !== image.dataset.muggleSrc) image.setAttribute('src', image.dataset.muggleSrc);
+      });
+      targets.push({ person: person.dataset.person, image, available, press });
+    }
+  }
+  collect('.genealogy-stage-color .genealogy-card[data-house-variants]', '.sigil img', false);
+  collect('.genealogy-stage-press .genealogy-card[data-house-press-variants]', '.sigil img', true);
+  collect('.genealogy-fullscreen-tapestry .genealogy-tapestry-person[data-house-variants]', '.tapestry-avatar-color', false);
+  collect('.genealogy-fullscreen-tapestry .genealogy-tapestry-person[data-house-press-variants]', '.tapestry-avatar-press', true);
 
   function refresh() {
-    for (const target of targets) {
-      const image = target.querySelector('.sigil img, .tapestry-avatar-color');
-      if (!image) continue;
-      image.dataset.muggleSrc ||= image.getAttribute('src');
-      const house = sortingAssignments[target.dataset.person]?.house;
-      const available = target.dataset.houseVariants.split(' ');
+    for (const { person, image, available, press } of targets) {
+      const house = sortingAssignments[person]?.house;
       const source = house && available.includes(house)
-        ? portraitUrl(target.dataset.person, house)
+        ? `assets/embedded/gene_house_${press ? 'press_' : ''}${person}_${house}.webp`
         : image.dataset.muggleSrc;
       if (image.getAttribute('src') !== source) image.setAttribute('src', source);
     }
-  }
-
-  for (const target of targets) {
-    const image = target.querySelector('.sigil img, .tapestry-avatar-color');
-    image?.addEventListener('error', () => {
-      if (image.getAttribute('src') !== image.dataset.muggleSrc) image.setAttribute('src', image.dataset.muggleSrc);
-    });
   }
 
   const previousSave = saveSorting;

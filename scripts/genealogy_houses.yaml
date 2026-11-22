@@ -1,10 +1,326 @@
-# Les portraits de genealogy.yaml sont les versions « Moldu » et ne sont jamais écrasés.
-# Les maisons sont indépendantes de eye_color. La cérémonie pourra remplir assignments.
+# Les portraits de genealogy.yaml restent les versions Moldu de référence.
+# Les maisons sont indépendantes de eye_color et viennent uniquement de la cérémonie.
 default_variant: muggle
 assignments: {}
 variants:
+  marcel_yvonne:
+    gryffindor: assets/genealogy_house_variants/marcel_yvonne/gryffindor_uniform_v1.webp
+    hufflepuff: assets/genealogy_house_variants/marcel_yvonne/hufflepuff_uniform_v1.webp
+    ravenclaw: assets/genealogy_house_variants/marcel_yvonne/ravenclaw_uniform_v1.webp
+    slytherin: assets/genealogy_house_variants/marcel_yvonne/slytherin_uniform_v1.webp
+  yvonne:
+    gryffindor: assets/genealogy_house_variants/yvonne/gryffindor_uniform_v1.webp
+    hufflepuff: assets/genealogy_house_variants/yvonne/hufflepuff_uniform_v1.webp
+    ravenclaw: assets/genealogy_house_variants/yvonne/ravenclaw_uniform_v1.webp
+    slytherin: assets/genealogy_house_variants/yvonne/slytherin_uniform_v1.webp
+  regine:
+    gryffindor: assets/genealogy_house_variants/regine/gryffindor_uniform_v1.webp
+    hufflepuff: assets/genealogy_house_variants/regine/hufflepuff_uniform_v1.webp
+    ravenclaw: assets/genealogy_house_variants/regine/ravenclaw_uniform_v1.webp
+    slytherin: assets/genealogy_house_variants/regine/slytherin_uniform_v1.webp
+  georges:
+    gryffindor: assets/genealogy_house_variants/georges/gryffindor_uniform_v1.webp
+    hufflepuff: assets/genealogy_house_variants/georges/hufflepuff_uniform_v1.webp
+    ravenclaw: assets/genealogy_house_variants/georges/ravenclaw_uniform_v1.webp
+    slytherin: assets/genealogy_house_variants/georges/slytherin_uniform_v1.webp
+  veronique:
+    gryffindor: assets/genealogy_house_variants/veronique/gryffindor_uniform_v1.webp
+    hufflepuff: assets/genealogy_house_variants/veronique/hufflepuff_uniform_v1.webp
+    ravenclaw: assets/genealogy_house_variants/veronique/ravenclaw_uniform_v1.webp
+    slytherin: assets/genealogy_house_variants/veronique/slytherin_uniform_v1.webp
+  thierry:
+    gryffindor: assets/genealogy_house_variants/thierry/gryffindor_uniform_v1.webp
+    hufflepuff: assets/genealogy_house_variants/thierry/hufflepuff_uniform_v1.webp
+    ravenclaw: assets/genealogy_house_variants/thierry/ravenclaw_uniform_v1.webp
+    slytherin: assets/genealogy_house_variants/thierry/slytherin_uniform_v1.webp
+  corinne:
+    gryffindor: assets/genealogy_house_variants/corinne/gryffindor_uniform_v1.webp
+    hufflepuff: assets/genealogy_house_variants/corinne/hufflepuff_uniform_v1.webp
+    ravenclaw: assets/genealogy_house_variants/corinne/ravenclaw_uniform_v1.webp
+    slytherin: assets/genealogy_house_variants/corinne/slytherin_uniform_v1.webp
+  michel:
+    gryffindor: assets/genealogy_house_variants/michel/gryffindor_uniform_v1.webp
+    hufflepuff: assets/genealogy_house_variants/michel/hufflepuff_uniform_v1.webp
+    ravenclaw: assets/genealogy_house_variants/michel/ravenclaw_uniform_v1.webp
+    slytherin: assets/genealogy_house_variants/michel/slytherin_uniform_v1.webp
+  valerie:
+    gryffindor: assets/genealogy_house_variants/valerie/gryffindor_uniform_v1.webp
+    hufflepuff: assets/genealogy_house_variants/valerie/hufflepuff_uniform_v1.webp
+    ravenclaw: assets/genealogy_house_variants/valerie/ravenclaw_uniform_v1.webp
+    slytherin: assets/genealogy_house_variants/valerie/slytherin_uniform_v1.webp
+  marcel:
+    gryffindor: assets/genealogy_house_variants/marcel/gryffindor_uniform_v1.webp
+    hufflepuff: assets/genealogy_house_variants/marcel/hufflepuff_uniform_v1.webp
+    ravenclaw: assets/genealogy_house_variants/marcel/ravenclaw_uniform_v1.webp
+    slytherin: assets/genealogy_house_variants/marcel/slytherin_uniform_v1.webp
+  paulette:
+    gryffindor: assets/genealogy_house_variants/paulette/gryffindor_uniform_v1.webp
+    hufflepuff: assets/genealogy_house_variants/paulette/hufflepuff_uniform_v1.webp
+    ravenclaw: assets/genealogy_house_variants/paulette/ravenclaw_uniform_v1.webp
+    slytherin: assets/genealogy_house_variants/paulette/slytherin_uniform_v1.webp
+  pere_nathalie:
+    gryffindor: assets/genealogy_house_variants/pere_nathalie/gryffindor_uniform_v1.webp
+    hufflepuff: assets/genealogy_house_variants/pere_nathalie/hufflepuff_uniform_v1.webp
+    ravenclaw: assets/genealogy_house_variants/pere_nathalie/ravenclaw_uniform_v1.webp
+    slytherin: assets/genealogy_house_variants/pere_nathalie/slytherin_uniform_v1.webp
+  mere_nathalie:
+    gryffindor: assets/genealogy_house_variants/mere_nathalie/gryffindor_uniform_v1.webp
+    hufflepuff: assets/genealogy_house_variants/mere_nathalie/hufflepuff_uniform_v1.webp
+    ravenclaw: assets/genealogy_house_variants/mere_nathalie/ravenclaw_uniform_v1.webp
+    slytherin: assets/genealogy_house_variants/mere_nathalie/slytherin_uniform_v1.webp
+  nathalie:
+    gryffindor: assets/genealogy_house_variants/nathalie/gryffindor_uniform_v1.webp
+    hufflepuff: assets/genealogy_house_variants/nathalie/hufflepuff_uniform_v1.webp
+    ravenclaw: assets/genealogy_house_variants/nathalie/ravenclaw_uniform_v1.webp
+    slytherin: assets/genealogy_house_variants/nathalie/slytherin_uniform_v1.webp
+  caro:
+    gryffindor: assets/genealogy_house_variants/caro/gryffindor_uniform_v1.webp
+    hufflepuff: assets/genealogy_house_variants/caro/hufflepuff_uniform_v1.webp
+    ravenclaw: assets/genealogy_house_variants/caro/ravenclaw_uniform_v1.webp
+    slytherin: assets/genealogy_house_variants/caro/slytherin_uniform_v1.webp
+  thierry_charlotte:
+    gryffindor: assets/genealogy_house_variants/thierry_charlotte/gryffindor_uniform_v1.webp
+    hufflepuff: assets/genealogy_house_variants/thierry_charlotte/hufflepuff_uniform_v1.webp
+    ravenclaw: assets/genealogy_house_variants/thierry_charlotte/ravenclaw_uniform_v1.webp
+    slytherin: assets/genealogy_house_variants/thierry_charlotte/slytherin_uniform_v1.webp
+  yoann:
+    gryffindor: assets/genealogy_house_variants/yoann/gryffindor_uniform_v1.webp
+    hufflepuff: assets/genealogy_house_variants/yoann/hufflepuff_uniform_v1.webp
+    ravenclaw: assets/genealogy_house_variants/yoann/ravenclaw_uniform_v1.webp
+    slytherin: assets/genealogy_house_variants/yoann/slytherin_uniform_v1.webp
+  julien:
+    gryffindor: assets/genealogy_house_variants/julien/gryffindor_uniform_v1.webp
+    hufflepuff: assets/genealogy_house_variants/julien/hufflepuff_uniform_v1.webp
+    ravenclaw: assets/genealogy_house_variants/julien/ravenclaw_uniform_v1.webp
+    slytherin: assets/genealogy_house_variants/julien/slytherin_uniform_v1.webp
+  cindy:
+    gryffindor: assets/genealogy_house_variants/cindy/gryffindor_uniform_v1.webp
+    hufflepuff: assets/genealogy_house_variants/cindy/hufflepuff_uniform_v1.webp
+    ravenclaw: assets/genealogy_house_variants/cindy/ravenclaw_uniform_v1.webp
+    slytherin: assets/genealogy_house_variants/cindy/slytherin_uniform_v1.webp
+  damien:
+    gryffindor: assets/genealogy_house_variants/damien/gryffindor_uniform_v1.webp
+    hufflepuff: assets/genealogy_house_variants/damien/hufflepuff_uniform_v1.webp
+    ravenclaw: assets/genealogy_house_variants/damien/ravenclaw_uniform_v1.webp
+    slytherin: assets/genealogy_house_variants/damien/slytherin_uniform_v1.webp
+  marine:
+    gryffindor: assets/genealogy_house_variants/marine/gryffindor_uniform_v1.webp
+    hufflepuff: assets/genealogy_house_variants/marine/hufflepuff_uniform_v1.webp
+    ravenclaw: assets/genealogy_house_variants/marine/ravenclaw_uniform_v1.webp
+    slytherin: assets/genealogy_house_variants/marine/slytherin_uniform_v1.webp
+  helene:
+    gryffindor: assets/genealogy_house_variants/helene/gryffindor_uniform_v1.webp
+    hufflepuff: assets/genealogy_house_variants/helene/hufflepuff_uniform_v1.webp
+    ravenclaw: assets/genealogy_house_variants/helene/ravenclaw_uniform_v1.webp
+    slytherin: assets/genealogy_house_variants/helene/slytherin_uniform_v1.webp
+  tristan:
+    gryffindor: assets/genealogy_house_variants/tristan/gryffindor_uniform_v1.webp
+    hufflepuff: assets/genealogy_house_variants/tristan/hufflepuff_uniform_v1.webp
+    ravenclaw: assets/genealogy_house_variants/tristan/ravenclaw_uniform_v1.webp
+    slytherin: assets/genealogy_house_variants/tristan/slytherin_uniform_v1.webp
+  eloise:
+    gryffindor: assets/genealogy_house_variants/eloise/gryffindor_uniform_v1.webp
+    hufflepuff: assets/genealogy_house_variants/eloise/hufflepuff_uniform_v1.webp
+    ravenclaw: assets/genealogy_house_variants/eloise/ravenclaw_uniform_v1.webp
+    slytherin: assets/genealogy_house_variants/eloise/slytherin_uniform_v1.webp
+  charlotte:
+    gryffindor: assets/genealogy_house_variants/charlotte/gryffindor_uniform_v1.webp
+    hufflepuff: assets/genealogy_house_variants/charlotte/hufflepuff_uniform_v1.webp
+    ravenclaw: assets/genealogy_house_variants/charlotte/ravenclaw_uniform_v1.webp
+    slytherin: assets/genealogy_house_variants/charlotte/slytherin_uniform_v1.webp
+  theo:
+    gryffindor: assets/genealogy_house_variants/theo/gryffindor_uniform_v1.webp
+    hufflepuff: assets/genealogy_house_variants/theo/hufflepuff_uniform_v1.webp
+    ravenclaw: assets/genealogy_house_variants/theo/ravenclaw_uniform_v1.webp
+    slytherin: assets/genealogy_house_variants/theo/slytherin_uniform_v1.webp
+  elyna:
+    gryffindor: assets/genealogy_house_variants/elyna/gryffindor_uniform_v1.webp
+    hufflepuff: assets/genealogy_house_variants/elyna/hufflepuff_uniform_v1.webp
+    ravenclaw: assets/genealogy_house_variants/elyna/ravenclaw_uniform_v1.webp
+    slytherin: assets/genealogy_house_variants/elyna/slytherin_uniform_v1.webp
+  justin:
+    gryffindor: assets/genealogy_house_variants/justin/gryffindor_uniform_v1.webp
+    hufflepuff: assets/genealogy_house_variants/justin/hufflepuff_uniform_v1.webp
+    ravenclaw: assets/genealogy_house_variants/justin/ravenclaw_uniform_v1.webp
+    slytherin: assets/genealogy_house_variants/justin/slytherin_uniform_v1.webp
+  faustine:
+    gryffindor: assets/genealogy_house_variants/faustine/gryffindor_uniform_v1.webp
+    hufflepuff: assets/genealogy_house_variants/faustine/hufflepuff_uniform_v1.webp
+    ravenclaw: assets/genealogy_house_variants/faustine/ravenclaw_uniform_v1.webp
+    slytherin: assets/genealogy_house_variants/faustine/slytherin_uniform_v1.webp
+  maddie:
+    gryffindor: assets/genealogy_house_variants/maddie/gryffindor_uniform_v1.webp
+    hufflepuff: assets/genealogy_house_variants/maddie/hufflepuff_uniform_v1.webp
+    ravenclaw: assets/genealogy_house_variants/maddie/ravenclaw_uniform_v1.webp
+    slytherin: assets/genealogy_house_variants/maddie/slytherin_uniform_v1.webp
+  elie:
+    gryffindor: assets/genealogy_house_variants/elie/gryffindor_uniform_v1.webp
+    hufflepuff: assets/genealogy_house_variants/elie/hufflepuff_uniform_v1.webp
+    ravenclaw: assets/genealogy_house_variants/elie/ravenclaw_uniform_v1.webp
+    slytherin: assets/genealogy_house_variants/elie/slytherin_uniform_v1.webp
   abel:
     gryffindor: assets/genealogy_house_variants/abel/gryffindor_uniform_v2.webp
     hufflepuff: assets/genealogy_house_variants/abel/hufflepuff_uniform_v2.webp
     ravenclaw: assets/genealogy_house_variants/abel/ravenclaw_uniform_v2.webp
     slytherin: assets/genealogy_house_variants/abel/slytherin_uniform_v2.webp
+press_variants:
+  marcel_yvonne:
+    gryffindor: assets/genealogy_house_press_variants/marcel_yvonne/gryffindor_heraldic_v1.webp
+    hufflepuff: assets/genealogy_house_press_variants/marcel_yvonne/hufflepuff_heraldic_v1.webp
+    ravenclaw: assets/genealogy_house_press_variants/marcel_yvonne/ravenclaw_heraldic_v1.webp
+    slytherin: assets/genealogy_house_press_variants/marcel_yvonne/slytherin_heraldic_v1.webp
+  yvonne:
+    gryffindor: assets/genealogy_house_press_variants/yvonne/gryffindor_heraldic_v1.webp
+    hufflepuff: assets/genealogy_house_press_variants/yvonne/hufflepuff_heraldic_v1.webp
+    ravenclaw: assets/genealogy_house_press_variants/yvonne/ravenclaw_heraldic_v2.webp
+    slytherin: assets/genealogy_house_press_variants/yvonne/slytherin_heraldic_v2.webp
+  regine:
+    gryffindor: assets/genealogy_house_press_variants/regine/gryffindor_heraldic_v1.webp
+    hufflepuff: assets/genealogy_house_press_variants/regine/hufflepuff_heraldic_v1.webp
+    ravenclaw: assets/genealogy_house_press_variants/regine/ravenclaw_heraldic_v1.webp
+    slytherin: assets/genealogy_house_press_variants/regine/slytherin_heraldic_v1.webp
+  georges:
+    gryffindor: assets/genealogy_house_press_variants/georges/gryffindor_heraldic_v1.webp
+    hufflepuff: assets/genealogy_house_press_variants/georges/hufflepuff_heraldic_v1.webp
+    ravenclaw: assets/genealogy_house_press_variants/georges/ravenclaw_heraldic_v1.webp
+    slytherin: assets/genealogy_house_press_variants/georges/slytherin_heraldic_v1.webp
+  veronique:
+    gryffindor: assets/genealogy_house_press_variants/veronique/gryffindor_heraldic_v1.webp
+    hufflepuff: assets/genealogy_house_press_variants/veronique/hufflepuff_heraldic_v1.webp
+    ravenclaw: assets/genealogy_house_press_variants/veronique/ravenclaw_heraldic_v1.webp
+    slytherin: assets/genealogy_house_press_variants/veronique/slytherin_heraldic_v1.webp
+  thierry:
+    gryffindor: assets/genealogy_house_press_variants/thierry/gryffindor_heraldic_v1.webp
+    hufflepuff: assets/genealogy_house_press_variants/thierry/hufflepuff_heraldic_v1.webp
+    ravenclaw: assets/genealogy_house_press_variants/thierry/ravenclaw_heraldic_v1.webp
+    slytherin: assets/genealogy_house_press_variants/thierry/slytherin_heraldic_v1.webp
+  corinne:
+    gryffindor: assets/genealogy_house_press_variants/corinne/gryffindor_heraldic_v1.webp
+    hufflepuff: assets/genealogy_house_press_variants/corinne/hufflepuff_heraldic_v1.webp
+    ravenclaw: assets/genealogy_house_press_variants/corinne/ravenclaw_heraldic_v1.webp
+    slytherin: assets/genealogy_house_press_variants/corinne/slytherin_heraldic_v1.webp
+  michel:
+    gryffindor: assets/genealogy_house_press_variants/michel/gryffindor_heraldic_v1.webp
+    hufflepuff: assets/genealogy_house_press_variants/michel/hufflepuff_heraldic_v1.webp
+    ravenclaw: assets/genealogy_house_press_variants/michel/ravenclaw_heraldic_v1.webp
+    slytherin: assets/genealogy_house_press_variants/michel/slytherin_heraldic_v1.webp
+  valerie:
+    gryffindor: assets/genealogy_house_press_variants/valerie/gryffindor_heraldic_v1.webp
+    hufflepuff: assets/genealogy_house_press_variants/valerie/hufflepuff_heraldic_v1.webp
+    ravenclaw: assets/genealogy_house_press_variants/valerie/ravenclaw_heraldic_v1.webp
+    slytherin: assets/genealogy_house_press_variants/valerie/slytherin_heraldic_v1.webp
+  marcel:
+    gryffindor: assets/genealogy_house_press_variants/marcel/gryffindor_heraldic_v1.webp
+    hufflepuff: assets/genealogy_house_press_variants/marcel/hufflepuff_heraldic_v1.webp
+    ravenclaw: assets/genealogy_house_press_variants/marcel/ravenclaw_heraldic_v1.webp
+    slytherin: assets/genealogy_house_press_variants/marcel/slytherin_heraldic_v1.webp
+  paulette:
+    gryffindor: assets/genealogy_house_press_variants/paulette/gryffindor_heraldic_v1.webp
+    hufflepuff: assets/genealogy_house_press_variants/paulette/hufflepuff_heraldic_v1.webp
+    ravenclaw: assets/genealogy_house_press_variants/paulette/ravenclaw_heraldic_v1.webp
+    slytherin: assets/genealogy_house_press_variants/paulette/slytherin_heraldic_v1.webp
+  pere_nathalie:
+    gryffindor: assets/genealogy_house_press_variants/pere_nathalie/gryffindor_heraldic_v1.webp
+    hufflepuff: assets/genealogy_house_press_variants/pere_nathalie/hufflepuff_heraldic_v1.webp
+    ravenclaw: assets/genealogy_house_press_variants/pere_nathalie/ravenclaw_heraldic_v1.webp
+    slytherin: assets/genealogy_house_press_variants/pere_nathalie/slytherin_heraldic_v1.webp
+  mere_nathalie:
+    gryffindor: assets/genealogy_house_press_variants/mere_nathalie/gryffindor_heraldic_v1.webp
+    hufflepuff: assets/genealogy_house_press_variants/mere_nathalie/hufflepuff_heraldic_v1.webp
+    ravenclaw: assets/genealogy_house_press_variants/mere_nathalie/ravenclaw_heraldic_v1.webp
+    slytherin: assets/genealogy_house_press_variants/mere_nathalie/slytherin_heraldic_v1.webp
+  nathalie:
+    gryffindor: assets/genealogy_house_press_variants/nathalie/gryffindor_heraldic_v1.webp
+    hufflepuff: assets/genealogy_house_press_variants/nathalie/hufflepuff_heraldic_v1.webp
+    ravenclaw: assets/genealogy_house_press_variants/nathalie/ravenclaw_heraldic_v1.webp
+    slytherin: assets/genealogy_house_press_variants/nathalie/slytherin_heraldic_v1.webp
+  caro:
+    gryffindor: assets/genealogy_house_press_variants/caro/gryffindor_heraldic_v1.webp
+    hufflepuff: assets/genealogy_house_press_variants/caro/hufflepuff_heraldic_v1.webp
+    ravenclaw: assets/genealogy_house_press_variants/caro/ravenclaw_heraldic_v1.webp
+    slytherin: assets/genealogy_house_press_variants/caro/slytherin_heraldic_v1.webp
+  thierry_charlotte:
+    gryffindor: assets/genealogy_house_press_variants/thierry_charlotte/gryffindor_heraldic_v1.webp
+    hufflepuff: assets/genealogy_house_press_variants/thierry_charlotte/hufflepuff_heraldic_v1.webp
+    ravenclaw: assets/genealogy_house_press_variants/thierry_charlotte/ravenclaw_heraldic_v1.webp
+    slytherin: assets/genealogy_house_press_variants/thierry_charlotte/slytherin_heraldic_v1.webp
+  yoann:
+    gryffindor: assets/genealogy_house_press_variants/yoann/gryffindor_heraldic_v1.webp
+    hufflepuff: assets/genealogy_house_press_variants/yoann/hufflepuff_heraldic_v1.webp
+    ravenclaw: assets/genealogy_house_press_variants/yoann/ravenclaw_heraldic_v1.webp
+    slytherin: assets/genealogy_house_press_variants/yoann/slytherin_heraldic_v1.webp
+  julien:
+    gryffindor: assets/genealogy_house_press_variants/julien/gryffindor_heraldic_v1.webp
+    hufflepuff: assets/genealogy_house_press_variants/julien/hufflepuff_heraldic_v1.webp
+    ravenclaw: assets/genealogy_house_press_variants/julien/ravenclaw_heraldic_v1.webp
+    slytherin: assets/genealogy_house_press_variants/julien/slytherin_heraldic_v1.webp
+  cindy:
+    gryffindor: assets/genealogy_house_press_variants/cindy/gryffindor_heraldic_v1.webp
+    hufflepuff: assets/genealogy_house_press_variants/cindy/hufflepuff_heraldic_v1.webp
+    ravenclaw: assets/genealogy_house_press_variants/cindy/ravenclaw_heraldic_v1.webp
+    slytherin: assets/genealogy_house_press_variants/cindy/slytherin_heraldic_v1.webp
+  damien:
+    gryffindor: assets/genealogy_house_press_variants/damien/gryffindor_heraldic_v1.webp
+    hufflepuff: assets/genealogy_house_press_variants/damien/hufflepuff_heraldic_v1.webp
+    ravenclaw: assets/genealogy_house_press_variants/damien/ravenclaw_heraldic_v1.webp
+    slytherin: assets/genealogy_house_press_variants/damien/slytherin_heraldic_v1.webp
+  marine:
+    gryffindor: assets/genealogy_house_press_variants/marine/gryffindor_heraldic_v1.webp
+    hufflepuff: assets/genealogy_house_press_variants/marine/hufflepuff_heraldic_v1.webp
+    ravenclaw: assets/genealogy_house_press_variants/marine/ravenclaw_heraldic_v1.webp
+    slytherin: assets/genealogy_house_press_variants/marine/slytherin_heraldic_v1.webp
+  helene:
+    gryffindor: assets/genealogy_house_press_variants/helene/gryffindor_heraldic_v1.webp
+    hufflepuff: assets/genealogy_house_press_variants/helene/hufflepuff_heraldic_v1.webp
+    ravenclaw: assets/genealogy_house_press_variants/helene/ravenclaw_heraldic_v1.webp
+    slytherin: assets/genealogy_house_press_variants/helene/slytherin_heraldic_v1.webp
+  tristan:
+    gryffindor: assets/genealogy_house_press_variants/tristan/gryffindor_heraldic_v1.webp
+    hufflepuff: assets/genealogy_house_press_variants/tristan/hufflepuff_heraldic_v1.webp
+    ravenclaw: assets/genealogy_house_press_variants/tristan/ravenclaw_heraldic_v1.webp
+    slytherin: assets/genealogy_house_press_variants/tristan/slytherin_heraldic_v1.webp
+  eloise:
+    gryffindor: assets/genealogy_house_press_variants/eloise/gryffindor_heraldic_v1.webp
+    hufflepuff: assets/genealogy_house_press_variants/eloise/hufflepuff_heraldic_v1.webp
+    ravenclaw: assets/genealogy_house_press_variants/eloise/ravenclaw_heraldic_v1.webp
+    slytherin: assets/genealogy_house_press_variants/eloise/slytherin_heraldic_v1.webp
+  charlotte:
+    gryffindor: assets/genealogy_house_press_variants/charlotte/gryffindor_heraldic_v1.webp
+    hufflepuff: assets/genealogy_house_press_variants/charlotte/hufflepuff_heraldic_v1.webp
+    ravenclaw: assets/genealogy_house_press_variants/charlotte/ravenclaw_heraldic_v1.webp
+    slytherin: assets/genealogy_house_press_variants/charlotte/slytherin_heraldic_v1.webp
+  theo:
+    gryffindor: assets/genealogy_house_press_variants/theo/gryffindor_heraldic_v1.webp
+    hufflepuff: assets/genealogy_house_press_variants/theo/hufflepuff_heraldic_v1.webp
+    ravenclaw: assets/genealogy_house_press_variants/theo/ravenclaw_heraldic_v1.webp
+    slytherin: assets/genealogy_house_press_variants/theo/slytherin_heraldic_v1.webp
+  elyna:
+    gryffindor: assets/genealogy_house_press_variants/elyna/gryffindor_heraldic_v1.webp
+    hufflepuff: assets/genealogy_house_press_variants/elyna/hufflepuff_heraldic_v1.webp
+    ravenclaw: assets/genealogy_house_press_variants/elyna/ravenclaw_heraldic_v1.webp
+    slytherin: assets/genealogy_house_press_variants/elyna/slytherin_heraldic_v1.webp
+  justin:
+    gryffindor: assets/genealogy_house_press_variants/justin/gryffindor_heraldic_v1.webp
+    hufflepuff: assets/genealogy_house_press_variants/justin/hufflepuff_heraldic_v1.webp
+    ravenclaw: assets/genealogy_house_press_variants/justin/ravenclaw_heraldic_v1.webp
+    slytherin: assets/genealogy_house_press_variants/justin/slytherin_heraldic_v1.webp
+  faustine:
+    gryffindor: assets/genealogy_house_press_variants/faustine/gryffindor_heraldic_v1.webp
+    hufflepuff: assets/genealogy_house_press_variants/faustine/hufflepuff_heraldic_v1.webp
+    ravenclaw: assets/genealogy_house_press_variants/faustine/ravenclaw_heraldic_v1.webp
+    slytherin: assets/genealogy_house_press_variants/faustine/slytherin_heraldic_v1.webp
+  maddie:
+    gryffindor: assets/genealogy_house_press_variants/maddie/gryffindor_heraldic_v1.webp
+    hufflepuff: assets/genealogy_house_press_variants/maddie/hufflepuff_heraldic_v1.webp
+    ravenclaw: assets/genealogy_house_press_variants/maddie/ravenclaw_heraldic_v1.webp
+    slytherin: assets/genealogy_house_press_variants/maddie/slytherin_heraldic_v1.webp
+  elie:
+    gryffindor: assets/genealogy_house_press_variants/elie/gryffindor_heraldic_v1.webp
+    hufflepuff: assets/genealogy_house_press_variants/elie/hufflepuff_heraldic_v1.webp
+    ravenclaw: assets/genealogy_house_press_variants/elie/ravenclaw_heraldic_v1.webp
+    slytherin: assets/genealogy_house_press_variants/elie/slytherin_heraldic_v1.webp
+  abel:
+    gryffindor: assets/genealogy_house_press_variants/abel/gryffindor_heraldic_v1.webp
+    hufflepuff: assets/genealogy_house_press_variants/abel/hufflepuff_heraldic_v1.webp
+    ravenclaw: assets/genealogy_house_press_variants/abel/ravenclaw_heraldic_v1.webp
+    slytherin: assets/genealogy_house_press_variants/abel/slytherin_heraldic_v1.webp
